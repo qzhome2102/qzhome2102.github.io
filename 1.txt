@@ -10,3 +10,33 @@ https://www.cloudiplc.com/
 https://www.xiuluohost.com/
 
 https://olvps.com/
+
+
+====================
+下载并解压：wget -N --no-check-certificate https://studygolang.com/dl/golang/go1.14.1.linux-amd64.tar.gz && tar -zxvf go1.14.1.linux-amd64.tar.gz
+
+mv go/ /usr/local/
+
+vi /etc/profile
+
+变量值在底部加入：export PATH=$PATH:/usr/local/go/bin
+
+source /etc/profile
+
+go version
+
+
+wget -N --no-check-certificate https://github.com/ginuerzh/gost/releases/download/v2.10.1/gost-linux-386-2.10.1.gz && gzip -d gost-linux-386-2.10.1.gz
+mv gost-linux-386-2.10.1 gost
+chmod +x gost
+
+
+
+
+nohup cd gost && ./gost -L=:54123/173.82.202.67:54123 -F=ws://173.82.202.67:443/ws &
+
+
+nohup ./gost -D -L "ws://:443?path=/ws&rbuf=4096&wbuf=4096&compression=false" &
+
+
+wget "https://github.com/chiakge/Linux-NetSpeed/raw/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
