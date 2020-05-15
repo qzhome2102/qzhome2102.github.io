@@ -26,17 +26,22 @@ source /etc/profile
 go version
 
 
-wget -N --no-check-certificate https://github.com/ginuerzh/gost/releases/download/v2.10.1/gost-linux-386-2.10.1.gz && gzip -d gost-linux-386-2.10.1.gz
-mv gost-linux-386-2.10.1 gost
+wget -N --no-check-certificate https://github.com/ginuerzh/gost/releases/download/v2.11.0/gost-linux-amd64-2.11.0.gz && gzip -d gost-linux-amd64-2.11.0.gz
+mv gost-linux-amd64-2.11.0 gost
 chmod +x gost
 
 
 
 
-nohup cd gost && ./gost -L=:54123/173.82.202.67:54123 -F=ws://173.82.202.67:443/ws &
+cd /root/gost && nohup ./gost -L=:54123/173.82.202.67:54123 -F=ws://173.82.202.67:443/ws &      中转机
 
 
-nohup ./gost -D -L "ws://:443?path=/ws&rbuf=4096&wbuf=4096&compression=false" &
+cd /root/gost && nohup ./gost -D -L "ws://:443?path=/ws&rbuf=4096&wbuf=4096&compression=false" &  SSR-VPS落地机
 
 
 wget "https://github.com/chiakge/Linux-NetSpeed/raw/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+
+
+wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh && chmod +x shadowsocksR.sh && ./shadowsocksR.sh 2>&1 | tee shadowsocksR.log
+
+wget -qO natcfg.sh https://raw.githubusercontent.com/arloor/iptablesUtils/master/natcfg.sh && bash natcfg.sh
