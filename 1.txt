@@ -73,3 +73,13 @@ touch /var/lock/subsys/local
 Shell 复制
 //前面的username password port是自己随便设置的
 //后面的password ip port是国外已经配置好的ss
+
+
+
+
+
+
+./gost -L ss2+mwss://AEAD_CHACHA20_POLY1305:qaz100200@:55005  落地机
+
+
+./gost -L=socks5://user:qq123456@:55005 -F=ss2+mwss://AEAD_CHACHA20_POLY1305:qaz100200@192.3.249.206:55005  中转机
