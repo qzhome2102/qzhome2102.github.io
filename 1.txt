@@ -83,3 +83,28 @@ Shell 复制
 
 
 ./gost -L=socks5://user:qq123456@:55005 -F=ss2+mwss://AEAD_CHACHA20_POLY1305:qaz100200@192.3.249.206:55005  中转机
+
+
+==========在Ubuntu 18.04/16.04/14.04====nginx tls1.3==========
+
+
+要在Ubuntu上添加Nginx PPA，请运行以下命令：
+
+sudo add-apt-repository ppa:ondrej/nginx
+
+sudo apt update
+
+然后删除现有的Nginx包（你的Nginx配置文件不会被删除）：
+
+sudo apt remove nginx
+
+如果你使用iRedMail和Nginx，那么运行sudo apt remove nginx-full来删除Nginx。
+
+并从PPA安装Nginx：
+
+sudo apt install nginx
+
+运行，则需要升级OpenSSL软件包：
+
+sudo apt upgrade
+
