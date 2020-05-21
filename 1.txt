@@ -65,3 +65,11 @@ root@localhost:~# vi /etc/rc.local
 touch /var/lock/subsys/local
 /bin/sh /root/frpc.sh
 
+
+
+=========socks5==================
+
+./gost -L=socks5://username:password@:port -F=ss://chacha20:password@IP:port
+Shell 复制
+//前面的username password port是自己随便设置的
+//后面的password ip port是国外已经配置好的ss
