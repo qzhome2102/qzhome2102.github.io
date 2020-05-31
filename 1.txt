@@ -75,7 +75,7 @@ Shell 复制
 //后面的password ip port是国外已经配置好的ss
 
 
-
+cd /root/gost && nohup ./gost -L=tcp://:13698/92.38.129.18:54443 -L=udp://:13698/92.38.129.18:54443 &    直接中转相当iptables
 
 
 
