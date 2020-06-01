@@ -89,10 +89,38 @@ cd /root/gost && nohup ./gost -L=tcp://:13698/92.38.129.18:54443 -L=udp://:13698
 
 v2ray
 
-./gost -L=tcp://:10038 -L=udp://:10038 -F=forward+mtls://185.238.250.81:8080?mbind=true  中转机
+./gost -L tcp://:10038 -L udp://:10038 -F forward+mtls://185.238.250.81:8080?mbind=true  中转机
 
-./gost -L=mtls://:8080/127.0.0.1:443   落地机
+./gost -L mtls://:8080/127.0.0.1:443   落地机
 
+
+ssr        443端口通讯端口  8080是SSR端口
+
+./gost -L tcp://:666 -L udp://:666 -F relay+mtls://185.238.250.81:443   中转机
+
+./gost -L relay+mtls://:443/185.238.250.81:8080             落地机
+
+
+可以用relay+mtls  relay+tls   relay+mwss  relay+wss
+
+tls - TLS
+
+mtls - Multiplex TLS，在TLS上增加多路复用功能 (2.5+)
+
+ws - Websocket
+
+mws - Multiplex Websocket，在Websocket上增加多路复用功能 (2.5+)
+
+wss - Websocket Secure，基于TLS加密的Websocket
+
+mwss - Multiplex Websocket Secure，在基于TLS加密的Websocket上增加多路复用功能 (2.5+)
+
+旧的SSR 
+
+cd /root/gost && nohup ./gost -L=:13688/156.96.105.89:54122 -F=ws://156.96.105.89:443/ws &   中转机
+
+
+cd /root/gost && nohup .gost -L "ws://:443?path=/ws&rbuf=4096&wbuf=4096&compression=false" &   落地机
 
 
 ==========在Ubuntu 18.04/16.04/14.04====nginx tls1.3==========
@@ -105,7 +133,7 @@ sudo add-apt-repository ppa:ondrej/nginx
 sudo apt update
 
 然后删除现有的Nginx包（你的Nginx配置文件不会被删除）：
-
+  
 sudo apt remove nginx
 
 如果你使用iRedMail和Nginx，那么运行sudo apt remove nginx-full来删除Nginx。
