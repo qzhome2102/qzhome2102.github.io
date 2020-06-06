@@ -122,6 +122,13 @@ cd /root/gost && nohup ./gost -L=:13688/156.96.105.89:54122 -F=ws://156.96.105.8
 
 cd /root/gost && nohup .gost -L "ws://:443?path=/ws&rbuf=4096&wbuf=4096&compression=false" &   落地机
 
+===ss===gost======
+
+./gost -L "relay+h2://admin:password@:1443?cert=/root/1.cer&key=/root/1.key&ca=/root/1.ca"   落地机
+
+./gost -L ss://aes-256-gcm:qaz100200@:12345 -F "relay+h2://admin:password@ghh.nb06.com:1443?cert=/root/gost/1.cer&key=/root/gost/1.key&ca=/root/gost/1.ca&secure=true"    中转机
+
+域名 解析 落地机IP 
 
 ==========在Ubuntu 18.04/16.04/14.04====nginx tls1.3==========
 
