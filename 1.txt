@@ -150,6 +150,115 @@ cd /root/gost && nohup .gost -L "ws://:443?path=/ws&rbuf=4096&wbuf=4096&compress
 ./gost -L ss://aes-256-gcm:qaz100200@:12345 -F "relay+h2://admin:password@ghh.nb06.com:1443?cert=/root/gost/1.cer&key=/root/gost/1.key&ca=/root/gost/1.ca&secure=true"    中转机
 
 域名 解析 落地机IP 
+=================
+
+
+  用配置方式  注意 /root/gost/gost -C /root/gost.json  gost文件和配置文件 所在地址
+
+./gost -L=:13688/156.96.106.90:54122 -F=ws://156.96.106.90:443/ws
+./gost -L tcp://:13636 -L udp://:13636 -F relay+mwss://156.96.106.90:1443
+./gost -L=tcp://:13698/92.38.130.19:54443 -L=udp://:13698/92.38.130.19:54443
+./gost -L=tcp://:13666/92.38.130.19:443 -L=udp://:13666/92.38.130.19:443
+
+
+ServeNodes 相当 -L   ChainNodes   相当 -F
+
+{
+    "Debug": true,                       
+    "Retries": 0,
+    "ServeNodes": [
+        "tcp://:13636",
+        "udp://:13636"
+    ],
+    "ChainNodes": [
+        "relay+mwss://156.96.106.90:1443"
+    ],
+
+
+    "Routes": [
+        {
+            "Retries": 0,
+            "ServeNodes": [
+                "tcp://:13688/156.96.106.90:54122"
+                "udp://:13688/156.96.106.90:54122"
+            ],
+           "ChainNodes": [
+                "ws://156.96.106.90:443/ws"
+            ]
+        },
+
+
+        {
+            "Retries": 0,
+            "ServeNodes": [
+                "tcp://:13698/92.38.130.19:54443",
+                "udp://:13698/92.38.130.19:54443"
+            ]
+        },
+
+
+        {
+            "Retries": 0,
+            "ServeNodes": [
+                "tcp://:13666/92.38.130.19:443",
+                "udp://:13666/92.38.130.19:443"
+            ]
+        }
+
+
+    ]
+
+}
+=============
+如果单条可以这样写
+{
+    "Debug": true,
+    "Retries": 0,
+    "ServeNodes": [
+        "tcp://:13636",
+        "udp://:13636"
+    ],
+    "ChainNodes": [
+        "relay+mwss://156.96.106.90:1443"
+    ]
+}
+
+
+
+vi /usr/lib/systemd/system/gost.service
+或
+vi /etc/systemd/system/gost.service
+
+
+cat > /etc/systemd/system/gost.service <<-EOF
+[Unit]
+Description=gost
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+
+[Service]
+Type=simple
+User=root
+DynamicUser=true
+ExecStart=/root/gost/gost -C /root/gost.json
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+重启 
+systemctl restart gost.service
+状态 
+systemctl status gost.service
+自启 
+systemctl enable gost.service
+停止
+systemctl stop gost.service
+
+
+
+
+
 
 ==========在Ubuntu 18.04/16.04/14.04====nginx tls1.3==========
 
