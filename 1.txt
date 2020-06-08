@@ -179,7 +179,7 @@ ServeNodes 相当 -L   ChainNodes   相当 -F
         {
             "Retries": 0,
             "ServeNodes": [
-                "tcp://:13688/156.96.106.90:54122"
+                "tcp://:13688/156.96.106.90:54122",
                 "udp://:13688/156.96.106.90:54122"
             ],
            "ChainNodes": [
@@ -240,7 +240,7 @@ Wants=network-online.target systemd-networkd-wait-online.service
 Type=simple
 User=root
 DynamicUser=true
-ExecStart=/root/gost/gost -C /root/gost.json
+ExecStart=/root/gost/gost -C /root/gost/gost.json
 
 [Install]
 WantedBy=multi-user.target
