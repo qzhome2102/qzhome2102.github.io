@@ -287,28 +287,31 @@ sudo apt upgrade
 VPS增加交换内存
 解决内存低于512M的问题
 
-一、创建文件
+1、使用root用户登陆，进入一个目录
 
-sudo dd if=/dev/zero of=/root/swap bs=1024 count=1024000
+cd /var/
+2、获取512MB的文件块：（一般设置为内存的2倍，count后面的数为要设置的swap大小xxMB，以下以1G为例）
 
-SSH 执行以上命令，创建一个名为 swapfile 的 1G 空文件（写 0 占用磁盘）。
+dd if=/dev/zero of=swapfile bs=1M count=1024
+3、创建swap文件
 
-二、制作为 Swap 文件
+/sbin/mkswap swapfile
+4、激活swap文件
 
-mkswap /root/swap
+/sbin/swapon swapfile
+5、查看一下swap是否正确：
 
-三. 授予权限
+/sbin/swapon -s
+另外为了安全建议执行：
 
-chmod 0600 /root/swap
+chmod 0644 /var/swapfile
+改一下权限
+6、加到fstab文件中让系统引导时自动启动
 
-四 . 启动
+vi /etc/fstab
+在末尾增加以下内容：
 
-swapon /root/swap
+/var/swapfile swap swap defaults 0 0
+也可以直接执行如下命令，感觉这样更方便
 
-五. vim /etc/fstab 或 vi //etc/fstab
-
-添加
-
-/root/swap swap swap defaults 0 0
-
-：wq 保存
+echo "/var/swapfile swap swap defaults 0 0" >>/etc/fstab
