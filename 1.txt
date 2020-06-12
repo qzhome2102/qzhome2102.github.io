@@ -283,3 +283,32 @@ sudo apt install nginx
 
 sudo apt upgrade
 
+========================
+VPS增加交换内存
+解决内存低于512M的问题
+
+一、创建文件
+
+sudo dd if=/dev/zero of=/root/swap bs=1024 count=1024000
+
+SSH 执行以上命令，创建一个名为 swapfile 的 1G 空文件（写 0 占用磁盘）。
+
+二、制作为 Swap 文件
+
+mkswap /root/swap
+
+三. 授予权限
+
+chmod 0600 /root/swap
+
+四 . 启动
+
+swapon /root/swap
+
+五. vim /etc/fstab 或 vi //etc/fstab
+
+添加
+
+/root/swap swap swap defaults 0 0
+
+：wq 保存
