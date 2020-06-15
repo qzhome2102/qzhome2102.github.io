@@ -241,6 +241,9 @@ Type=simple
 User=root
 DynamicUser=true
 ExecStart=/root/gost/gost -C /root/gost/gost.json
+KillMode=control-group
+Restart=always
+RestartSec=10s
 
 [Install]
 WantedBy=multi-user.target
@@ -254,7 +257,6 @@ systemctl status gost.service
 systemctl enable gost.service
 停止
 systemctl stop gost.service
-
 
 
 
