@@ -43,6 +43,18 @@ cd /root/gost && nohup ./gost -D -L "ws://:443?path=/ws&rbuf=4096&wbuf=4096&comp
 
 wget "https://github.com/chiakge/Linux-NetSpeed/raw/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 
+BBR
+
+预先准备
+centos：yum install ca-certificates wget -y && update-ca-trust force-enable
+debian/ubuntu：apt-get install ca-certificates wget -y && update-ca-certificates
+
+不卸载内核版本
+wget -N "https://github.000060000.xyz/tcpx.sh" && chmod +x tcpx.sh && ./tcpx.sh
+卸载内核版本
+wget -N "https://github.000060000.xyz/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+
+
 
 wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh && chmod +x shadowsocksR.sh && ./shadowsocksR.sh 2>&1 | tee shadowsocksR.log
 
