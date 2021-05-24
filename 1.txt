@@ -329,3 +329,161 @@ vi /etc/fstab
 也可以直接执行如下命令，感觉这样更方便
 
 echo "/var/swapfile swap swap defaults 0 0" >>/etc/fstab
+
+====================================Xray====================
+
+
+更新证书 ssl.sh
+
+#!/bin/bash
+
+.acme.sh/acme.sh --install-cert -d jpxx.nb06.com --ecc --fullchain-file /usr/local/etc/xray/fullchain.cer --key-file /usr/local/etc/xray/jpxx.zzz.com.key
+echo "Xray Certificates Renewed"
+       
+chmod +r /usr/local/etc/xray/jpxx.zzz.com.key
+echo "Read Permission Granted for Private Key"
+
+systemctl restart xray
+echo "Xray Restarted"
+
+添加定时任务
+nano /etc/crontab
+
+0 1     1 * *   root    bash /root/ssl.sh
+
+
+systemctl status cron
+systemctl restart cron
+systemctl reload  cron
+
+xray模板
+
+
+{
+  "log": {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 443,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "c8639467-5433-4970-bdb6-feaa73ab0fa7",
+            "flow": "xtls-rprx-direct"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": 60000,
+            "alpn": "",
+            "xver": 1
+          },
+          {
+            "dest": 60001,
+            "alpn": "h2",
+            "xver": 1
+          },
+          {
+            "dest": 60002,
+            "path": "/xix/",
+            "xver": 1
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "xtls",
+        "xtlsSettings": {
+          "minVersion": "1.2",
+          "certificates": [
+            {
+              "certificateFile": "/usr/local/etc/xray/fullchain.cer",
+              "keyFile": "/usr/local/etc/xray/jpxx.nb06.com.key"
+            }
+          ]
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 60002,
+      "listen": "127.0.0.1",
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "c8639467-5433-4970-bdb6-feaa73ab0fa7"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "acceptProxyProtocol": true,
+          "path": "/xix/"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom"
+    }
+  ]
+}
+
+
+nginx 模版
+
+
+server
+{
+        listen 80;
+        listen [::]:80;
+	server_name jpxx.nb06.com;
+        return 301 https://$http_host$request_uri;
+
+        access_log  /dev/null;
+        error_log  /dev/null;
+}
+
+server
+{
+        listen 127.0.0.1:60000 proxy_protocol;
+        listen 127.0.0.1:60001 http2 proxy_protocol;
+	server_name jpxx.zzz.com;
+        index index.html index.htm index.php default.php default.htm default.html;
+        root /home/jpxx.nb06.com;
+        add_header Strict-Transport-Security "max-age=63072000" always;
+
+        location ~ /.well-known {
+            allow all;
+        }
+
+        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+        {
+                expires   30d;
+                error_log off;
+        }
+
+        location ~ .*\.(js|css)?$
+        {
+                expires   12h;
+                error_log off;
+        }
+}
+
+
