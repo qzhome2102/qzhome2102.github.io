@@ -14,6 +14,15 @@ https://www.xiuluohost.com/
 https://olvps.com/
 
 
+=======关闭各类防火墙=======
+  systemctl stop firewalld
+  systemctl disable firewalld
+  systemctl stop nftables
+  systemctl disable nftables
+  systemctl stop ufw
+  systemctl disable ufw
+
+
 ====================
 下载并解压：wget -N --no-check-certificate https://studygolang.com/dl/golang/go1.14.1.linux-amd64.tar.gz && tar -zxvf go1.14.1.linux-amd64.tar.gz
 
