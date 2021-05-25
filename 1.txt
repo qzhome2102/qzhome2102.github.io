@@ -356,6 +356,20 @@ systemctl status cron
 systemctl restart cron
 systemctl reload  cron
 
+================BBR=================
+
+预先准备
+centos：yum install ca-certificates wget -y && update-ca-trust force-enable
+debian/ubuntu：apt-get install ca-certificates wget -y && update-ca-certificates
+
+不卸载内核版本
+wget -O tcpx.sh "https://git.io/JYxKU" && chmod +x tcpx.sh && ./tcpx.sh
+卸载内核版本
+wget -O tcp.sh "https://git.io/coolspeeda" && chmod +x tcp.sh && ./tcp.sh
+
+=====================p安装XRAY============
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+
 xray模板
 
 
