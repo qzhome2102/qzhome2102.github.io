@@ -15,12 +15,12 @@ https://olvps.com/
 
 
 =======关闭各类防火墙=======
-  systemctl stop firewalld
-  systemctl disable firewalld
-  systemctl stop nftables
-  systemctl disable nftables
-  systemctl stop ufw
-  systemctl disable ufw
+systemctl stop firewalld
+systemctl disable firewalld
+systemctl stop nftables
+systemctl disable nftables
+systemctl stop ufw
+systemctl disable ufw
 
 
 ====================
@@ -379,6 +379,12 @@ wget -O tcp.sh "https://git.io/coolspeeda" && chmod +x tcp.sh && ./tcp.sh
 =====================p安装XRAY============
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
 
+
+systemctl restart xray
+
+systemctl status xray
+
+
 xray模板
 
 
@@ -636,7 +642,7 @@ xray模板
 }
 
 
-nginx 模版
+=========nginx 模版===========
 
 
 server
@@ -676,4 +682,34 @@ server
         }
 }
 
+======xray 分流=============
 
+"outbounds": [
+    {
+      "tag":"IP4_out",
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag":"IP6_out",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIPv6" // 指定使用 IPv6
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "outboundTag": "IP6_out",
+        "domain": ["geosite:netflix"] // netflix 走 IPv6
+      },
+      {
+        "type": "field",
+        "outboundTag": "IP4_out",
+        "network": "udp,tcp"// 其余走 IPv4
+      }
+    ]
+  }
+}
