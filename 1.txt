@@ -341,6 +341,7 @@ echo "/var/swapfile swap swap defaults 0 0" >>/etc/fstab
 
 ====================================Xray====================
 
+.acme.sh/acme.sh --install-cert -d jpxx.zzz.com --ecc --fullchain-file /usr/local/etc/xray/fullchain.cer --key-file /usr/local/etc/xray/jpxx.zzz.com.key
 
 更新证书 ssl.sh
 
