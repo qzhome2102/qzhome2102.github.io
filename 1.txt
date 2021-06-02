@@ -346,7 +346,7 @@ echo "/var/swapfile swap swap defaults 0 0" >>/etc/fstab
 
 #!/bin/bash
 
-.acme.sh/acme.sh --install-cert -d jpxx.nb06.com --ecc --fullchain-file /usr/local/etc/xray/fullchain.cer --key-file /usr/local/etc/xray/jpxx.zzz.com.key
+/root/.acme.sh/acme.sh --issue -d jpxx.zzz.com -w /home/jpxx.zzz.com -k ec-256 --fullchain-file /usr/local/etc/xray/fullchain.cer --key-file /usr/local/etc/xray/jpxx.zzz.com.key --force
 echo "Xray Certificates Renewed"
        
 chmod +r /usr/local/etc/xray/jpxx.zzz.com.key
@@ -432,7 +432,7 @@ xray模板
           "certificates": [
             {
               "certificateFile": "/usr/local/etc/xray/fullchain.cer",
-              "keyFile": "/usr/local/etc/xray/jpxx.nb06.com.key"
+              "keyFile": "/usr/local/etc/xray/jpxx.zzz.com.key"
             }
           ]
         }
@@ -682,7 +682,7 @@ server
         }
 }
 
-======xray 分流=============
+======xray 奈飞分流=============
 
 "outbounds": [
     {
@@ -713,3 +713,89 @@ server
     ]
   }
 }
+================ipv6 WARP =======ipv6可看奈飞======
+
+
+安装 WireGuard
+apt update
+
+apt install curl sudo lsb-release -y
+添加 back­ports 源
+
+echo "deb http://deb.debian.org/debian $(lsb_release -sc)-backports main" | sudo tee /etc/apt/sources.list.d/backports.list
+su root 
+sudo apt update
+安装网络工具包
+
+sudo apt install net-tools iproute2 openresolv dnsutils -y
+安装 wireguard-tools
+
+sudo apt install wireguard-tools --no-install-recommends
+先执行 uname -r 命令查看内核版本。如果是 5.6 以上内核则已经集成了 Wire­Guard ，就不需要安装了。如果不是，执行下面的命令
+
+
+ 
+sudo apt -t $(lsb_release -sc)-backports install linux-image-$(dpkg --print-architecture) linux-headers-$(dpkg --print-architecture) --install-recommends -y
+重启
+
+reboot
+查看版本（ 5.6 以上就可以了）
+
+uname -r
+使用 wgcf 生成 WireGuard 配置文件
+wgcf 是 Cloud­flare WARP 的非官方 CLI 工具，它可以模拟 WARP 客户端注册账号，并生成通用的 Wire­Guard 配置文件。
+
+安装 wgcf
+
+curl -fsSL git.io/wgcf.sh | sudo bash
+注册 WARP 账户 (将生成 wgcf-account.toml 文件保存账户信息)
+
+wgcf register
+生成 Wire­Guard 配置文件 (wgcf-profile.conf)
+
+wgcf generate
+生成的两个文件记得备份好，尤其是 wgcf-profile.conf，万一未来工具失效、重装系统后可能还用得着。
+
+编辑 WireGuard 配置文件
+编辑wgcf-profile.conf文件，其中可以在服务器端解析 engage.cloudflareclient.com 的ip
+nano /root/wgcf-profile.conf
+
+nslookup engage.cloudflareclient.com
+但大概率解析的结果为 162.159.192.1
+
+将配置文件中的 engage.cloudflareclient.com 替换为 162.159.192.1，并删除 AllowedIPs = 0.0.0.0/0。即配置文件中 [Peer] 部分为：
+
+[Peer]
+PublicKey = bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+AllowedIPs = ::/0
+Endpoint = 162.159.192.1:2408
+
+ 
+额外操作
+每个人的vps配置文件中默认的 DNS 都不一样， 1.1.1.1。由于它将替换掉系统中的 DNS 设置 (vi /etc/resolv.conf)，同时为了防止单 DNS 服务器故障导致无法解析，建议使用不同组织提供的公共 DNS 服务器组合。以下配置供参考，小伙伴们请根据实际情况来填写。
+DNS = 8.8.8.8,1.1.1.1,8.8.4.4
+
+启用 WireGuard 网络接口
+将 Wire­Guard 配置文件复制到 /etc/wireguard/ 并命名为 wgcf.conf。
+
+sudo cp wgcf-profile.conf /etc/wireguard/wgcf.conf
+开启网络接口（命令中的 wgcf 对应的是配置文件 wgcf.conf 的文件名前缀）。
+
+sudo wg-quick up wgcf
+开启网络接口
+
+行执行ip a命令，此时能看到名为wgcf的网络接口，类似于下面这张图：
+名为wgcf的网络接口
+
+执行以下命令检查是否连通。同时也能看到正在使用的是 Cloud­flare 的网络。
+
+curl -6 ip.p3terx.com
+测试完成后关闭相关接口，因为这样配置只是临时性的。
+
+sudo wg-quick down wgcf
+正式启用 Wire­Guard 网络接口
+
+# 启用守护进程
+sudo systemctl start wg-quick@wgcf
+# 设置开机启动
+sudo systemctl enable wg-quick@wgcf
