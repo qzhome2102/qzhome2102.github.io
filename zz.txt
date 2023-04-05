@@ -11,24 +11,24 @@ session_start();
 <script>
 // 定义函数，将pre元素的文本内容复制到剪贴板中
 function copyToClipboard() {
-    var pre = document.querySelector('pre');
-    var range = document.createRange();
-    range.selectNode(pre);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand('copy');
-    window.getSelection().removeAllRanges();
-    alert('网页源代码已复制到剪贴板！');
+var pre = document.querySelector('pre');
+var range = document.createRange();
+range.selectNode(pre);
+window.getSelection().removeAllRanges();
+window.getSelection().addRange(range);
+document.execCommand('copy');
+window.getSelection().removeAllRanges();
+alert('网页源代码已复制到剪贴板！');
 }
 </script>
 </head>
 <body>
 <form method="post">
-    <label for="url">网址：</label>
-    <input type="text" name="url" id="url" value="<?php echo isset($_POST['url']) ? htmlspecialchars($_POST['url']) : '' ?>">
-    <br>
-    <label for="ua">User-Agent：</label>
-    <select name="ua" id="ua">
+        <label for="url">网址：</label>
+        <input type="text" name="url" id="url" value="<?php echo isset($_POST['url']) ? htmlspecialchars($_POST['url']) : '' ?>">
+        <br>
+        <<label for="ua">User-Agent：</label>
+        <select name="ua" id="ua">
         <option value="baidu">百度蜘蛛</option>
         <option value="sogou">搜狗蜘蛛</option>
         <option value="sm">神马蜘蛛</option>
@@ -37,29 +37,44 @@ function copyToClipboard() {
         <option value="android">安卓蜘蛛</option>
         <option value="iphone">苹果蜘蛛</option>
         <option value="google">谷歌蜘蛛</option>
-    </select>
-    <br>
-    <input type="submit" value="获取网站源代码">
+        </select>
+        <br>
+        <label for="use_referer">使用来源地址：</label>
+        <select name="use_referer" id="use_referer">
+        <option value="0">否</option>
+        <option value="1">是</option>
+        </select>
+        <br>
+        <label for="referer">来源地址：</label>
+        <input type="text" name="referer" id="referer" value="<?php echo isset($_POST['referer']) ? htmlspecialchars($_POST['referer']) : 'https://www.baidu.com' ?>">
+        <br>
+        <input type="submit" value="获取网站源代码">
 </form>
 <br>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // 获取要抓取的网址和User-Agent
+    // 获取要抓取的网址、User-Agent、是否使用来源地址和来源地址
     $url = filter_input(INPUT_POST, 'url', FILTER_SANITIZE_URL);
     $ua = filter_input(INPUT_POST, 'ua', FILTER_SANITIZE_STRING);
+    $use_referer = filter_input(INPUT_POST, 'use_referer', FILTER_SANITIZE_NUMBER_INT);
+    $referer = '';
+    if ($use_referer) {
+        $referer = filter_input(INPUT_POST, 'referer', FILTER_SANITIZE_URL);
+    }
 
 if (!preg_match('/^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}([\w\-\.\/\?%&=]*)?$/i', $url)) {
     echo '输入的网址不合法！';
     exit;
 }
 
-    // 判断当前提交的网址是否需要更换User-Agent
-    if (isset($_SESSION['urls'][$url]) && $_SESSION['urls'][$url]['ua'] == $ua) {
-        // 如果存在，并且User-Agent没有变化，则直接使用上次存储的curl参数发送请求
+    // 判断当前提交的网址是否需要更换User-Agent和来源地址
+    if (isset($_SESSION['urls'][$url]) && $_SESSION['urls'][$url]['ua'] == $ua && $_SESSION['urls'][$url]['use_referer'] == $use_referer && $_SESSION['urls'][$url]['referer'] == $referer) {
+        // 如果存在，并且User-Agent和来源地址都没有变化，则直接使用上次存储的curl参数发送请求
         $user_agent = $_SESSION['urls'][$url]['user_agent'];
+        $referer = $_SESSION['urls'][$url]['referer'];
     } else {
-        // 如果不存在，或者User-Agent有变化，则设置新的curl参数进行请求
+        // 如果不存在，或者User-Agent或来源地址有变化，则设置新的curl参数进行请求
         switch ($ua) {
             case 'bing':
                 $user_agent = 'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)';
@@ -85,6 +100,11 @@ if (!preg_match('/^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}([\w\-\.\/\?%&=]*)?$/i', $
             default:
                 $user_agent = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
         }
+
+        if ($use_referer) {
+            // 如果需要使用来源地址，则设置curl参数中的Referer
+            $referer = filter_input(INPUT_POST, 'referer', FILTER_SANITIZE_URL);
+        }
     }
 
     // 设置curl参数
@@ -94,10 +114,24 @@ if (!preg_match('/^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}([\w\-\.\/\?%&=]*)?$/i', $
     curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_MAXREDIRS, 5);
+    curl_setopt($ch, CURLOPT_HEADER, true);
     curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+    if ($use_referer) {
+        curl_setopt($ch, CURLOPT_REFERER, $referer);
+    }
 
     // 执行curl请求
     $html = curl_exec($ch);
+
+    // 获取响应内容和状态码，并查找重定向URL
+    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    if ($http_code == 302) {
+        $headers = substr($html, 0, curl_getinfo($ch, CURLINFO_HEADER_SIZE));
+        preg_match_all('/Location:(.*?)\n/i', $headers, $matches);
+        $url = trim(array_pop($matches[0]));
+        curl_setopt($ch, CURLOPT_URL, $url);
+        $html = curl_exec($ch);
+    }
 
     // 关闭curl
     curl_close($ch);
@@ -105,7 +139,9 @@ if (!preg_match('/^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}([\w\-\.\/\?%&=]*)?$/i', $
     // 将当前网址存储在会话中以便下次使用
     $_SESSION['urls'][$url] = array(
         'ua' => $ua,
-        'user_agent' => $user_agent
+        'use_referer' => $use_referer,
+        'user_agent' => $user_agent,
+        'referer' => $referer
     );
 
     // 输出网页源代码到HTML表格中
@@ -114,6 +150,9 @@ if (!preg_match('/^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}([\w\-\.\/\?%&=]*)?$/i', $
     echo '<table border="1">';
     echo '<tr><th>网址：</th><td>' . htmlspecialchars($url) . '</td></tr>';
     echo '<tr><th>User-Agent：</th><td>' . htmlspecialchars($user_agent) . '</td></tr>';
+    if ($use_referer) {
+        echo '<tr><th>来源地址：</th><td>' . htmlspecialchars($referer) . '</td></tr>';
+    }
     echo '<tr><th>网页源代码：</th><td><pre>' . htmlspecialchars($html) . '</pre></td></tr>';
     echo '</table>';
     // 输出复制网页源代码的按钮
