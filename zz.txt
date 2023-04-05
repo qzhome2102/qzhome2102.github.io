@@ -46,8 +46,14 @@ function copyToClipboard() {
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // 获取要抓取的网址和User-Agent
-    $url = $_POST['url'];
-    $ua = $_POST['ua'];
+    $url = filter_input(INPUT_POST, 'url', FILTER_SANITIZE_URL);
+    $ua = filter_input(INPUT_POST, 'ua', FILTER_SANITIZE_STRING);
+
+    // 验证输入的网址是否合法
+    if (!preg_match('/^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}(\/[\w\-\.\?%&=]*)?$/i', $url)) {
+        echo '输入的网址不合法！';
+        exit;
+    }
 
     // 判断当前提交的网址是否需要更换User-Agent
     if (isset($_SESSION['urls'][$url]) && $_SESSION['urls'][$url]['ua'] == $ua) {
@@ -107,8 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // 输出复制网页源代码的按钮
     echo '<button onclick="copyToClipboard()">复制网页源代码</button>';
     echo '<table border="1">';
-    echo '<tr><th>网址：</th><td>' . $url . '</td></tr>';
-    echo '<tr><th>User-Agent：</th><td>' . $user_agent . '</td></tr>';
+    echo '<tr><th>网址：</th><td>' . htmlspecialchars($url) . '</td></tr>';
+    echo '<tr><th>User-Agent：</th><td>' . htmlspecialchars($user_agent) . '</td></tr>';
     echo '<tr><th>网页源代码：</th><td><pre>' . htmlspecialchars($html) . '</pre></td></tr>';
     echo '</table>';
     // 输出复制网页源代码的按钮
