@@ -6,21 +6,21 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>模拟蜘蛛获取网站源代码</title>
-    <script>
-        // 定义函数，将pre元素的文本内容复制到剪贴板中
-        function copyToClipboard() {
-            var pre = document.querySelector('pre');
-            var range = document.createRange();
-            range.selectNode(pre);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand('copy');
-            window.getSelection().removeAllRanges();
-            alert('网页源代码已复制到剪贴板！');
-        }
-    </script>
+<meta charset="UTF-8">
+<title>模拟蜘蛛获取网站源代码</title>
+<script>
+// 定义函数，将pre元素的文本内容复制到剪贴板中
+function copyToClipboard() {
+    var pre = document.querySelector('pre');
+    var range = document.createRange();
+    range.selectNode(pre);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    alert('网页源代码已复制到剪贴板！');
+}
+</script>
 </head>
 <body>
 <form method="post">
@@ -49,11 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $url = filter_input(INPUT_POST, 'url', FILTER_SANITIZE_URL);
     $ua = filter_input(INPUT_POST, 'ua', FILTER_SANITIZE_STRING);
 
-    // 验证输入的网址是否合法
-    if (!preg_match('/^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}(\/[\w\-\.\?%&=]*)?$/i', $url)) {
-        echo '输入的网址不合法！';
-        exit;
-    }
+if (!preg_match('/^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}([\w\-\.\/\?%&=]*)?$/i', $url)) {
+    echo '输入的网址不合法！';
+    exit;
+}
 
     // 判断当前提交的网址是否需要更换User-Agent
     if (isset($_SESSION['urls'][$url]) && $_SESSION['urls'][$url]['ua'] == $ua) {
@@ -87,28 +86,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $user_agent = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
         }
     }
+
     // 设置curl参数
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_USERAGENT, $ua);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // 自动重定向
-    curl_setopt($ch, CURLOPT_MAXREDIRS, 5); // 最多重定向次数
-    curl_setopt($ch, CURLOPT_HEADER, true);
+    curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_MAXREDIRS, 5);
     curl_setopt($ch, CURLOPT_TIMEOUT, 30);
 
     // 执行curl请求
     $html = curl_exec($ch);
-
-    // 获取响应内容和状态码，并查找重定向URL
-    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    if ($http_code == 302) {
-        $headers = substr($html, 0, curl_getinfo($ch, CURLINFO_HEADER_SIZE));
-        preg_match_all('/Location:(.*?)\n/i', $headers, $matches);
-        $url = trim(array_pop($matches[1]));
-        curl_setopt($ch, CURLOPT_URL, $url);
-        $html = curl_exec($ch);
-    }
 
     // 关闭curl
     curl_close($ch);
