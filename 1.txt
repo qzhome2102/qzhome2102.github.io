@@ -862,3 +862,139 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
+
+
+---------------------------------------------------------------
+
+FRP内网穿透转发Windows远程桌面端口
+当前位置：点晴OA办公管理信息系统 →『 经验分享&问题答疑 』
+
+admin
+2023年10月25日 11:59 本文热度 388
+下载地址（版本frp_0.52.3_windows_amd64）：
+
+https://github.com/fatedier/frp/releases/download/v0.52.3/frp_0.52.3_windows_amd64.zip
+
+其他版本下载：
+
+https://github.com/fatedier/frp/releases
+
+
+
+1、配置frps.ini文件并启动（云服务器）访问：42.194.142.223:7500
+
+[common]
+
+#1、这个是你当前的frp服务器ip，默认0.0.0.0就是接受所有来者
+
+bind_addr = 0.0.0.0
+
+#2、这个默认端口是7000，就是客户端和服务端通信的，不是你转发的那个端口
+
+#如果这个要改了，客户端的7000也要改成和这里一样。
+
+bind_port = 10010
+
+#3、这个是frp的web管理控制台的用户名密码，可以通过127.0.0.1:7500登录
+
+dashboard_user = admin
+dashboard_pwd = admin
+
+#4、管理控制台的默认端口
+
+dashboard_port = 7500
+
+#5、你要转发的服务端口
+
+vhost_ssh_port = 11100
+vhost_mstsc_port = 11101
+vhost_http_port = 11102
+vhost_tcp01_port = 11103
+vhost_tcp_range01_port = 11104
+vhost_tcp_range02_port = 11105
+vhost_tcp_range03_port = 11106
+
+#6、心跳连接:必须得有，frp 0.43.0版本如果不加，60秒就会自动断开连接！
+# 服务器就加这一条，客户机每台都要加。
+
+heartbeat_timeout = 30
+
+2、配置frpc.ini文件并启动（需要映射到外网出去的内网主机）
+
+[common]
+
+#1、你frp服务器的公网ip地址
+
+server_addr = 42.194.142.223
+
+#2、你frp服务器的通信端口，默认是7000，如果你服务器端改了，这里也要跟着改
+
+server_port = 10010
+
+# 转发多个端口
+
+[ssh]
+
+#3、协议类tcp/udp
+
+type = tcp
+
+#4、你当前内网服务器的网卡IP地址，不要用127.0.0.1
+
+1oca1_ip = 192.168.0.109
+
+#5、你要转发的服务端口（远程端口：3389；ssh:22)
+
+local_port = 22
+
+#6、你要映射到公网上的那个端口
+
+remote_port = 11100
+
+
+[mstsc]
+type = tcp
+1oca1_ip = 192.168.0.109
+local_port = 3389
+remote_port = 11101
+
+
+
+[http]
+type = http
+1oca1_ip = 192.168.0.109
+local_port = 5200
+remote_port = 11102
+custom_domains = 42.194.142.223
+
+[tcp01]
+
+type = tcp
+1oca1_ip = 192.168.0.109
+local_port = 11103
+remote_port = 11103
+
+
+
+[range:tcp]
+type = tcp
+1oca1_ip = 192.168.0.109
+local_port = 11104,11105,11106
+remote_port = 11104,11105,11106
+
+
+
+#7、服务器与客户机之间的心跳连接: 如果没有，每隔60秒就会自动断开连接！！
+
+heartbeat_timeout = 30
+
+启动
+
+D:\Program_Files\frp_0.47.0_windows_amd64\client>frpc.exe -c frpc.ini
+2023/03/29 12:36:26 [I] [service.go:299] [de12e81d53b4342f] login to server success, get run id [de12e81d53b4342f], server udp port [0]
+2023/03/29 12:36:26 [I] [proxy_manager.go:142] [de12e81d53b4342f] proxy added: [mstsc http tcp01 ssh]
+2023/03/29 12:36:26 [I] [control.go:172] [de12e81d53b4342f] [tcp01] start proxy success
+2023/03/29 12:36:26 [I] [control.go:172] [de12e81d53b4342f] [ssh] start proxy success
+2023/03/29 12:36:26 [I] [control.go:172] [de12e81d53b4342f] [mstsc] start proxy success
+2023/03/29 12:36:26 [I] [control.go:172] [de12e81d53b4342f] [http] start proxy success
+
