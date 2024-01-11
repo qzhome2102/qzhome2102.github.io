@@ -998,3 +998,20 @@ D:\Program_Files\frp_0.47.0_windows_amd64\client>frpc.exe -c frpc.ini
 2023/03/29 12:36:26 [I] [control.go:172] [de12e81d53b4342f] [mstsc] start proxy success
 2023/03/29 12:36:26 [I] [control.go:172] [de12e81d53b4342f] [http] start proxy success
 
+sudo vim /lib/systemd/system/frps.service
+在frps.service里写入以下内容
+
+
+cat > /lib/systemd/system/frps.service <<-EOF
+[Unit]
+Description=fraps service
+After=network.target syslog.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/root/frp/frps -c /root/frp/frps.ini
+
+[Install]
+WantedBy=multi-user.target
+EOF
