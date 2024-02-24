@@ -1017,3 +1017,58 @@ ExecStart=/root/frp/frps -c /root/frp/frps.ini
 [Install]
 WantedBy=multi-user.target
 EOF
+
+==============================
+cat > /etc/systemd/system/hbbs.service <<-EOF
+[Unit]
+Description=RustDesk Hbbs
+After=network.target
+
+[Service]
+User=root
+Type=simple
+WorkingDirectory=/root/rustdesk
+ExecStart=/root/rustdesk/hbbs -k _
+ExecStop=/bin/kill -TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+
+重启 
+systemctl restart hbbs.service
+状态 
+systemctl status hbbs.service
+自启 
+systemctl enable hbbs.service
+停止
+systemctl stop hbbs.service
+
+cat > /etc/systemd/system/hbbr.service <<-EOF
+[Unit]
+Description=RustDesk Hbbr
+After=network.target
+
+[Service]
+User=root
+Type=simple
+WorkingDirectory=/root/rustdesk
+ExecStart=/root/rustdesk/hbbr -k _
+ExecStop=/bin/kill -TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+重启 
+systemctl restart hbbr.service
+状态 
+systemctl status hbbr.service
+自启 
+systemctl enable hbbr.service
+停止
+systemctl stop hbbr.service
+
+
+
