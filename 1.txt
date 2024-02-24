@@ -432,13 +432,15 @@ xray模板
           }
         ]
       },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "xtls",
-        "xtlsSettings": {
-          "minVersion": "1.2",
-          "certificates": [
-            {
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "rejectUnknownSni": true,
+                    "minVersion": "1.2",
+                    "certificates": [
+                        {
+                "ocspStapling": 3600,
               "certificateFile": "/usr/local/etc/xray/fullchain.cer",
               "keyFile": "/usr/local/etc/xray/jpxx.zzz.com.key"
             }
