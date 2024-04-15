@@ -866,6 +866,21 @@ server {
 }
 
 
+----------------------------
+可在已有ssl证书 conf下
+    location /chat {
+        proxy_pass  https://api.openai.com/;
+        proxy_ssl_server_name on;
+        proxy_set_header Host api.openai.com;
+        proxy_set_header Connection '';
+        proxy_http_version 1.1;
+        chunked_transfer_encoding off;
+        proxy_buffering off;
+        proxy_cache off;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
 ---------------------------------------------------------------
 
 FRP内网穿透转发Windows远程桌面端口
