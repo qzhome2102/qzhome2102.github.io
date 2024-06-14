@@ -8,7 +8,7 @@
 
 ::============================================================================
 ::
-::   This script is a part of 'Î¢Èí¼¤»î½Å±¾¡¾ÓÉSeimoºº»¯¡¿' (MAS) project.
+::   This script is a part of 'å¾®è½¯æ¿€æ´»è„šæœ¬ã€ç”±Seimoæ±‰åŒ–ã€‘' (MAS) project.
 ::
 ::   Homepage: mass grave[.]dev
 ::      Email: windowsaddict@protonmail.com
@@ -64,10 +64,10 @@ set "mas=ht%blank%tps%blank%://mass%blank%grave.dev/"
 sc query Null | find /i "RUNNING"
 if %errorlevel% NEQ 0 (
 echo:
-echo ·şÎñÎ´ÔÚÔËĞĞ£¬³ÌĞò¿ÉÄÜÒÑ¾­±ÀÀ£...
+echo æœåŠ¡æœªåœ¨è¿è¡Œï¼Œç¨‹åºå¯èƒ½å·²ç»å´©æºƒ...
 echo:
 echo:
-echo °ïÖú£¨Ó¢ÎÄ£© - %mas%troubleshoot.html
+echo å¸®åŠ©ï¼ˆè‹±æ–‡ï¼‰ - %mas%troubleshoot.html
 echo:
 echo:
 ping 127.0.0.1 -n 10
@@ -79,7 +79,7 @@ cls
 pushd "%~dp0"
 >nul findstr /v "$" "%~nx0" && (
 echo:
-echo ´íÎó: ½Å±¾ĞĞÎ²µÄ»»ĞĞ·û¿ÉÄÜ´æÔÚÎÊÌâ£¬»òÕß½Å±¾Ä©Î²¿ÉÄÜÈ±ÉÙÒ»¸ö¿ÕĞĞ¡£
+echo é”™è¯¯: è„šæœ¬è¡Œå°¾çš„æ¢è¡Œç¬¦å¯èƒ½å­˜åœ¨é—®é¢˜ï¼Œæˆ–è€…è„šæœ¬æœ«å°¾å¯èƒ½ç¼ºå°‘ä¸€ä¸ªç©ºè¡Œã€‚
 echo:
 ping 127.0.0.1 -n 6 >nul
 popd
@@ -91,7 +91,7 @@ popd
 
 cls
 color 07
-title  Î¢Èí¼¤»î½Å±¾¡¾ÓÉSeimoºº»¯¡¿
+title  å¾®è½¯æ¿€æ´»è„šæœ¬ã€ç”±Seimoæ±‰åŒ–ã€‘
 
 set _args=
 set _elev=
@@ -127,15 +127,15 @@ set "eline=echo: &call :_color %Red% "==== ERROR ====" &echo:"
 
 if %winbuild% LSS 7600 (
 %nceline%
-echo ²»Ö§³ÖµÄÏµÍ³°æ±¾ [%winbuild%].
-echo ±¾ÏîÄ¿½öÖ§³ÖWindows7/8/8.1/10/11ÒÔ¼°Í¬µÈµ×²ãµÄWindows Server¡£
+echo ä¸æ”¯æŒçš„ç³»ç»Ÿç‰ˆæœ¬ [%winbuild%].
+echo æœ¬é¡¹ç›®ä»…æ”¯æŒWindows7/8/8.1/10/11ä»¥åŠåŒç­‰åº•å±‚çš„Windows Serverã€‚
 goto MASend
 )
 
 for %%# in (powershell.exe) do @if "%%~$PATH:#"=="" (
 %nceline%
-echo ÏµÍ³ÄÚÎ´ÕÒµ½powershell.exe¡£
-echo ³ÌĞò¼´½«ÖÕÖ¹...
+echo ç³»ç»Ÿå†…æœªæ‰¾åˆ°powershell.exeã€‚
+echo ç¨‹åºå³å°†ç»ˆæ­¢...
 goto MASend
 )
 
@@ -160,10 +160,10 @@ setlocal EnableDelayedExpansion
 echo "!_batf!" | find /i "!_ttemp!" 1>nul && (
 if /i not "!_work!"=="!_ttemp!" (
 %nceline%
-echo ½Å±¾´ÓÁÙÊ±ÎÄ¼ş¼ĞÆô¶¯
-echo Çë¼ì²éÊÇ·ñ´ÓÑ¹Ëõ°üÄÚÖ±½ÓÔËĞĞ¡£
+echo è„šæœ¬ä»ä¸´æ—¶æ–‡ä»¶å¤¹å¯åŠ¨
+echo è¯·æ£€æŸ¥æ˜¯å¦ä»å‹ç¼©åŒ…å†…ç›´æ¥è¿è¡Œã€‚
 echo:
-echo Çë½âÑ¹ºóÔÙ´ÎÔËĞĞ¡£
+echo è¯·è§£å‹åå†æ¬¡è¿è¡Œã€‚
 goto MASend
 )
 )
@@ -175,8 +175,8 @@ goto MASend
 >nul fltmc || (
 if not defined _elev %psc% "start cmd.exe -arg '/c \"!_PSarg:'=''!\"' -verb runas" && exit /b
 %nceline%
-echo ´Ë½Å±¾ĞèÒª¹ÜÀíÔ±È¨ÏŞ¡£
-echo Îª´Ë£¬ÇëÓÒ¼üµ¥»÷´Ë½Å±¾£¬²¢Ñ¡Ôñ¡°ÒÔ¹ÜÀíÔ±Éí·İÔËĞĞ¡±£»
+echo æ­¤è„šæœ¬éœ€è¦ç®¡ç†å‘˜æƒé™ã€‚
+echo ä¸ºæ­¤ï¼Œè¯·å³é”®å•å‡»æ­¤è„šæœ¬ï¼Œå¹¶é€‰æ‹©â€œä»¥ç®¡ç†å‘˜èº«ä»½è¿è¡Œâ€ï¼›
 goto MASend
 )
 
@@ -229,7 +229,7 @@ setlocal EnableDelayedExpansion
 
 cls
 color 07
-title  Î¢Èí¼¤»î½Å±¾¡¾ÓÉSeimoºº»¯¡¿ 2.2
+title  å¾®è½¯æ¿€æ´»è„šæœ¬ã€ç”±Seimoæ±‰åŒ–ã€‘ 2.2
 mode 76, 30
 
 echo:
@@ -238,23 +238,23 @@ echo:
 echo:
 echo:       ______________________________________________________________
 echo:
-echo:                             ÇëÑ¡Ôñ¼¤»îÄ£Ê½:
+echo:                             è¯·é€‰æ‹©æ¿€æ´»æ¨¡å¼:
 echo:
-echo:             [1] HWID        ^|  Windows           ^|   ÓÀ¾Ã
-echo:             [2] Ohook       ^|  Office            ^|   ÓÀ¾Ã
-echo:             [3] KMS38       ^|  Windows           ^|   µ½ 2038 Äê
-echo:             [4] Online KMS  ^|  Windows / Office  ^|   ĞøÆÚ 180 Ìì
+echo:             [1] HWID        ^|  Windows           ^|   æ°¸ä¹…
+echo:             [2] Ohook       ^|  Office            ^|   æ°¸ä¹…
+echo:             [3] KMS38       ^|  Windows           ^|   åˆ° 2038 å¹´
+echo:             [4] Online KMS  ^|  Windows / Office  ^|   ç»­æœŸ 180 å¤©
 echo:             __________________________________________________      
 echo:
-echo:             [5] ²é¿´µ±Ç°ÏµÍ³¼¤»î×´Ì¬
-echo:             [6] ¹ÊÕÏÅÅ³ı
-echo:             [7] ÔÓÏî
-echo:             [8] °ïÖú
-echo:             [0] ÍË³ö
+echo:             [5] æŸ¥çœ‹å½“å‰ç³»ç»Ÿæ¿€æ´»çŠ¶æ€
+echo:             [6] æ•…éšœæ’é™¤
+echo:             [7] æ‚é¡¹
+echo:             [8] å¸®åŠ©
+echo:             [0] é€€å‡º
 echo:       ______________________________________________________________
 echo:
-call :_color2 %_White% "          " %_Green% "Í¨¹ı¼üÅÌÊäÈë²Ëµ¥Ñ¡Ïî [1,2,3,4,5,6,7,8,0] :"
-echo:                           ÓÉ seimo.cn ºº»¯
+call :_color2 %_White% "          " %_Green% "é€šè¿‡é”®ç›˜è¾“å…¥èœå•é€‰é¡¹ [1,2,3,4,5,6,7,8,0] :"
+echo:                           ç”± seimo.cn æ±‰åŒ–
 choice /C:123456780 /N
 set _erl=%errorlevel%
 
@@ -274,7 +274,7 @@ goto :MainMenu
 :Extras
 
 cls
-title  ÔÓÏî
+title  æ‚é¡¹
 mode 76, 30
 echo:
 echo:
@@ -283,19 +283,19 @@ echo:
 echo:
 echo:       ______________________________________________________________
 echo:
-echo:             [1] ĞŞ¸ÄWindowsÏµÍ³°æ±¾
+echo:             [1] ä¿®æ”¹Windowsç³»ç»Ÿç‰ˆæœ¬
 echo:
-echo:             [2] ÌáÈ¡ $OEM$ ÎÄ¼ş¼Ğ
+echo:             [2] æå– $OEM$ æ–‡ä»¶å¤¹
 echo:
-echo:             [3] ²é¿´µ±Ç°ÏµÍ³¼¤»î×´Ì¬ [vbs]
+echo:             [3] æŸ¥çœ‹å½“å‰ç³»ç»Ÿæ¿€æ´»çŠ¶æ€ [vbs]
 echo:
-echo:             [4] ÏÂÔØÕı°æ Windows / Office
+echo:             [4] ä¸‹è½½æ­£ç‰ˆ Windows / Office
 echo:             __________________________________________________      
 echo:                                                                     
-echo:             [0] ·µ»ØÖ÷²Ëµ¥
+echo:             [0] è¿”å›ä¸»èœå•
 echo:       ______________________________________________________________
 echo:
-call :_color2 %_White% "           " %_Green% "Í¨¹ı¼üÅÌÊäÈë²Ëµ¥Ñ¡Ïî [1,2,3,4,0] :"
+call :_color2 %_White% "           " %_Green% "é€šè¿‡é”®ç›˜è¾“å…¥èœå•é€‰é¡¹ [1,2,3,4,0] :"
 choice /C:12340 /N
 set _erl=%errorlevel%
 
@@ -311,15 +311,15 @@ goto :Extras
 :Extract$OEM$
 
 cls
-title  ÌáÈ¡ $OEM$ ÎÄ¼ş¼Ğ
+title  æå– $OEM$ æ–‡ä»¶å¤¹
 mode 76, 30
 
 if not exist "!_desktop_!\" (
 %eline%
-echo Î´¼ì²âµ½×ÀÃæÎ»ÖÃ£¬²Ù×÷ÖÕÖ¹¡­
+echo æœªæ£€æµ‹åˆ°æ¡Œé¢ä½ç½®ï¼Œæ“ä½œç»ˆæ­¢â€¦
 echo _____________________________________________________
 echo:
-call :_color %_Yellow% "°´ÈÎÒâ¼ü·µ»Ø..."
+call :_color %_Yellow% "æŒ‰ä»»æ„é”®è¿”å›..."
 pause >nul
 goto Extras
 )
@@ -329,7 +329,7 @@ if exist "!_desktop_!\$OEM$\" (
 echo $OEM$ folder already exists on the Desktop.
 echo _____________________________________________________
 echo:
-call :_color %_Yellow% "°´ÈÎÒâ¼ü·µ»Ø..."
+call :_color %_Yellow% "æŒ‰ä»»æ„é”®è¿”å›..."
 pause >nul
 goto Extras
 )
@@ -337,13 +337,13 @@ goto Extras
 :Extract$OEM$2
 
 cls
-title  ÌáÈ¡ $OEM$ ÎÄ¼ş¼Ğ
+title  æå– $OEM$ æ–‡ä»¶å¤¹
 mode 78, 30
 echo:
 echo:
 echo:
 echo:
-echo:                           ÌáÈ¡ $OEM$ ÎÄ¼ş¼Ğµ½×ÀÃæ           
+echo:                           æå– $OEM$ æ–‡ä»¶å¤¹åˆ°æ¡Œé¢           
 echo:           ________________________________________________________
 echo:
 echo:              [1] HWID
@@ -357,11 +357,11 @@ echo:              [7] KMS38      ^(Windows^) ^+ Ohook      ^(Office^)
 echo:              [8] KMS38      ^(Windows^) ^+ Online KMS ^(Office^)
 echo:              [9] Online KMS ^(Windows^) ^+ Ohook      ^(Office^)
 echo:
-call :_color2 %_White% "              [R] " %_Green% "×ÔÊöÎÄ¼ş"
-echo:              [0] ·µ»Ø
+call :_color2 %_White% "              [R] " %_Green% "è‡ªè¿°æ–‡ä»¶"
+echo:              [0] è¿”å›
 echo:           ________________________________________________________
 echo:  
-call :_color2 %_White% "           " %_Green% "Í¨¹ı¼üÅÌÊäÈë²Ëµ¥Ñ¡Ïî£º"
+call :_color2 %_White% "           " %_Green% "é€šè¿‡é”®ç›˜è¾“å…¥èœå•é€‰é¡¹ï¼š"
 choice /C:123456789R0 /N
 set _erl=%errorlevel%
 
@@ -401,20 +401,20 @@ if not exist "!_dir!\SetupComplete.cmd" set _error=1
 
 if defined _error (
 %eline%
-echo ÌáÈ¡ $OEM$ ÎÄ¼ş¼Ğµ½×ÀÃæÊ§°Ü¡£
+echo æå– $OEM$ æ–‡ä»¶å¤¹åˆ°æ¡Œé¢å¤±è´¥ã€‚
 ) else (
 echo:
 call :_color %Blue% "%_oem%"
-call :_color %Green% "³É¹¦ÌáÈ¡ $OEM$ ÎÄ¼ş¼Ğµ½×ÀÃæ¡£"
+call :_color %Green% "æˆåŠŸæå– $OEM$ æ–‡ä»¶å¤¹åˆ°æ¡Œé¢ã€‚"
 )
 echo "%_oem%" | find /i "KMS38" 1>nul && (
 echo:
-echo KMS38¼¤»î·şÎñÆ÷ºËĞÄ/¸¨Öú°æ±¾£¨ÎŞÍ¼ĞÎÓÃ»§½çÃæ£© ,
-echo ²é¿´´ËÒ³ %mas%oem-folder
+echo KMS38æ¿€æ´»æœåŠ¡å™¨æ ¸å¿ƒ/è¾…åŠ©ç‰ˆæœ¬ï¼ˆæ— å›¾å½¢ç”¨æˆ·ç•Œé¢ï¼‰ ,
+echo æŸ¥çœ‹æ­¤é¡µ %mas%oem-folder
 )
 echo ___________________________________________________________________
 echo:
-call :_color %_Yellow% "°´ÈÎÒâ¼ü·µ»Ø..."
+call :_color %_Yellow% "æŒ‰ä»»æ„é”®è¿”å›..."
 pause >nul
 goto Extras
 
@@ -436,7 +436,7 @@ set _NoEditionChange=0
 
 cls
 color 07
-title  HWID ¼¤»î
+title  HWID æ¿€æ´»
 
 set _args=
 set _elev=
@@ -491,27 +491,27 @@ set "_Yellow="Black" "Yellow""
 set "nceline=echo: &echo ==== ERROR ==== &echo:"
 set "eline=echo: &call :dk_color %Red% "==== ERROR ====" &echo:"
 if %~z0 GEQ 200000 (
-set "_exitmsg=·µ»Ø"
-set "_fixmsg=·µ»ØÖ÷²Ëµ¥£¬Ñ¡Ôñ "¹ÊÕÏÅÅ³ı "²¢ÔËĞĞ "ĞŞ¸´ Licensing "Ñ¡Ïî¡£"
+set "_exitmsg=è¿”å›"
+set "_fixmsg=è¿”å›ä¸»èœå•ï¼Œé€‰æ‹© "æ•…éšœæ’é™¤ "å¹¶è¿è¡Œ "ä¿®å¤ Licensing "é€‰é¡¹ã€‚"
 ) else (
-set "_exitmsg=ÍË³ö"
-set "_fixmsg=ÔÚ MAS ÎÄ¼ş¼ĞÖĞ£¬ÔËĞĞ "¹ÊÕÏÅÅ³ı "½Å±¾²¢Ñ¡Ôñ "ĞŞ¸´ Licensing "Ñ¡Ïî¡£"
+set "_exitmsg=é€€å‡º"
+set "_fixmsg=åœ¨ MAS æ–‡ä»¶å¤¹ä¸­ï¼Œè¿è¡Œ "æ•…éšœæ’é™¤ "è„šæœ¬å¹¶é€‰æ‹© "ä¿®å¤ Licensing "é€‰é¡¹ã€‚"
 )
 
 ::========================================================================================================================================
 
 if %winbuild% LSS 10240 (
 %eline%
-echo ¼ì²âµ½²»Ö§³ÖµÄ²Ù×÷ÏµÍ³°æ±¾ [%winbuild%].
-echo HWID ¼¤»î½öÖ§³Ö Windows 10/11¡£
-echo ÇëÊ¹ÓÃÔÚÏß KMS ¼¤»îÑ¡Ïî¡£
+echo æ£€æµ‹åˆ°ä¸æ”¯æŒçš„æ“ä½œç³»ç»Ÿç‰ˆæœ¬ [%winbuild%].
+echo HWID æ¿€æ´»ä»…æ”¯æŒ Windows 10/11ã€‚
+echo è¯·ä½¿ç”¨åœ¨çº¿ KMS æ¿€æ´»é€‰é¡¹ã€‚
 goto dk_done
 )
 
 if exist "%SystemRoot%\Servicing\Packages\Microsoft-Windows-Server*Edition~*.mum" (
 %eline%
-echo Windows Server ²»Ö§³Ö HWID ¼¤»î¡£
-echo ÇëÊ¹ÓÃ KMS38 »òÔÚÏß KMS ¼¤»îÑ¡Ïî¡£
+echo Windows Server ä¸æ”¯æŒ HWID æ¿€æ´»ã€‚
+echo è¯·ä½¿ç”¨ KMS38 æˆ–åœ¨çº¿ KMS æ¿€æ´»é€‰é¡¹ã€‚
 goto dk_done
 )
 
@@ -535,14 +535,14 @@ setlocal EnableDelayedExpansion
 
 cls
 mode 108, 34
-title  HWID ¼¤»î
+title  HWID æ¿€æ´»
 
 ::  Start Windows update service at the beginning and in later checks as well, because in some normal conditions one kick is not enough
 
 sc start wuauserv %nul%
 
 echo:
-echo ³õÊ¼»¯...
+echo åˆå§‹åŒ–...
 call :dk_product
 call :dk_ckeckwmic
 
@@ -551,8 +551,8 @@ call :dk_ckeckwmic
 sc start sppsvc %nul%
 if %errorlevel% NEQ 1056 if %errorlevel% NEQ 0 (
 echo:
-echo ´íÎó´úÂë: %errorlevel%
-call :dk_color %Red% "Æô¶¯ [sppsvc] ·şÎñÊ§°Ü£¬Ê£Óà¹ı³Ì¿ÉÄÜĞèÒªºÜ³¤Ê±¼ä..."
+echo é”™è¯¯ä»£ç : %errorlevel%
+call :dk_color %Red% "å¯åŠ¨ [sppsvc] æœåŠ¡å¤±è´¥ï¼Œå‰©ä½™è¿‡ç¨‹å¯èƒ½éœ€è¦å¾ˆé•¿æ—¶é—´..."
 echo:
 )
 
@@ -565,12 +565,12 @@ if defined _perm (
 cls
 echo ___________________________________________________________________________________________
 echo:
-call :dk_color2 %_White% "     " %Green% "¼ì²é: %winos% ÒÑ±»ÓÀ¾Ã¼¤»î"
-call :dk_color2 %_White% "     " %Gray% "ÎŞĞè¼¤»î"¡£
+call :dk_color2 %_White% "     " %Green% "æ£€æŸ¥: %winos% å·²è¢«æ°¸ä¹…æ¿€æ´»"
+call :dk_color2 %_White% "     " %Gray% "æ— éœ€æ¿€æ´»"ã€‚
 echo ___________________________________________________________________________________________
 if %_unattended%==1 goto dk_done
 echo:
-choice /C:10 /N /M ">    [1] ¼¤»î [0] %_exitmsg% : "
+choice /C:10 /N /M ">    [1] æ¿€æ´» [0] %_exitmsg% : "
 if errorlevel 2 exit /b
 )
 cls
@@ -584,10 +584,10 @@ reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID %nul2
 %eline%
 echo [%winos% ^| %winbuild%]
 echo:
-echo ÆÀ¹À°æÎŞ·¨¼¤»î¡£
-echo ÄúĞèÒª°²×° %winos% µÄÍêÕû°æ±¾
+echo è¯„ä¼°ç‰ˆæ— æ³•æ¿€æ´»ã€‚
+echo æ‚¨éœ€è¦å®‰è£… %winos% çš„å®Œæ•´ç‰ˆæœ¬
 echo:
-echo ´ÓÕâÀïÏÂÔØ£º
+echo ä»è¿™é‡Œä¸‹è½½ï¼š
 echo %mas%genuine-installation-media.html
 goto dk_done
 )
@@ -619,7 +619,7 @@ if not defined osSKU set osSKU=%regSKU%
 
 if not defined osSKU (
 %eline%
-echo ¼ì²âµ½²»ÕıÈ·µÄ SKU Öµ£¬³ÌĞòÖÕÖ¹...
+echo æ£€æµ‹åˆ°ä¸æ­£ç¡®çš„ SKU å€¼ï¼Œç¨‹åºç»ˆæ­¢...
 goto dk_done
 )
 
@@ -631,7 +631,7 @@ cls
 echo:
 for /f "skip=2 tokens=2*" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PROCESSOR_ARCHITECTURE') do set arch=%%b
 for /f "tokens=6-7 delims=[]. " %%i in ('ver') do if "%%j"=="" (set fullbuild=%%i) else (set fullbuild=%%i.%%j)
-echo ¼ì²é²Ù×÷ÏµÍ³ĞÅÏ¢                        [%winos% ^| %fullbuild% ^| %arch%]
+echo æ£€æŸ¥æ“ä½œç³»ç»Ÿä¿¡æ¯                        [%winos% ^| %fullbuild% ^| %arch%]
 
 ::  Check Internet connection
 
@@ -646,7 +646,7 @@ if !errorlevel!==0 set _int=1
 )
 
 if defined _int (
-echo ¼ì²éÍøÂçÁ¬½Ó            [ÒÑÁ¬½Ó]
+echo æ£€æŸ¥ç½‘ç»œè¿æ¥            [å·²è¿æ¥]
 ) else (
 set error=1
 call :dk_color %Red% "Checking Internet Connection            [Not Connected]"
@@ -664,12 +664,12 @@ if %_WSH% EQU 0 (
 reg add "HKLM\Software\Microsoft\Windows Script Host\Settings" /v Enabled /t REG_DWORD /d 1 /f %nul%
 reg add "HKCU\Software\Microsoft\Windows Script Host\Settings" /v Enabled /t REG_DWORD /d 1 /f %nul%
 if not "%arch%"=="x86" reg add "HKLM\Software\Microsoft\Windows Script Host\Settings" /v Enabled /t REG_DWORD /d 1 /f /reg:32 %nul%
-echo ÆôÓÃ Windows ½Å±¾ÍĞ¹Ü            [³É¹¦]
+echo å¯ç”¨ Windows è„šæœ¬æ‰˜ç®¡            [æˆåŠŸ]
 )
 
 ::========================================================================================================================================
 
-echo Æô¶¯Õï¶Ï²âÊÔ...
+echo å¯åŠ¨è¯Šæ–­æµ‹è¯•...
 
 set "_serv=ClipSVC wlidsvc sppsvc KeyIso LicenseManager Winmgmt wuauserv"
 
@@ -735,14 +735,14 @@ if not defined key call :hwidfallback
 if defined altkey (set key=%altkey%&set changekey=1&set notworking=)
 
 if defined notworking if defined notfoundaltactID (
-call :dk_color %Red% "Checking Alternate Edition For HWID     [%altedition% Î´ÕÒµ½¼¤»î ID]"
+call :dk_color %Red% "Checking Alternate Edition For HWID     [%altedition% æœªæ‰¾åˆ°æ¿€æ´» ID]"
 )
 
 if not defined key (
 %eline%
 echo [%winos% ^| %winbuild% ^| SKU:%osSKU%]
-echo ÎŞ·¨ÔÚÖ§³ÖµÄ²úÆ·ÁĞ±íÖĞÕÒµ½´Ë²úÆ·¡£
-echo È·±£ÄúÊ¹ÓÃµÄÊÇ×îĞÂ°æ±¾µÄ½Å±¾¡£
+echo æ— æ³•åœ¨æ”¯æŒçš„äº§å“åˆ—è¡¨ä¸­æ‰¾åˆ°æ­¤äº§å“ã€‚
+echo ç¡®ä¿æ‚¨ä½¿ç”¨çš„æ˜¯æœ€æ–°ç‰ˆæœ¬çš„è„šæœ¬ã€‚
 echo %mas%
 echo:
 goto dk_done
@@ -769,9 +769,9 @@ if %errorcode% NEQ 0 set "errorcode=[0x%=ExitCode%]"
 
 if %errorcode% EQU 0 (
 call :dk_refresh
-echo °²×°Í¨ÓÃ²úÆ·ÃÜÔ¿          [%key%] [³É¹¦]
+echo å®‰è£…é€šç”¨äº§å“å¯†é’¥          [%key%] [æˆåŠŸ]
 ) else (
-call :dk_color %Red% "°²×°Í¨ÓÃ²úÆ·ÃÜÔ¿          [%key%] [Ê§°Ü] %errorcode%"
+call :dk_color %Red% "å®‰è£…é€šç”¨äº§å“å¯†é’¥          [%key%] [å¤±è´¥] %errorcode%"
 if not defined error (
 if defined altapplist call :dk_color %Red% "Activation ID not found for this key."
 call :dk_color %Blue% "%_fixmsg%"
@@ -792,9 +792,9 @@ if not "%name%"=="US" (
 set regionchange=1
 %psc% "Set-WinHomeLocation -GeoId 244" %nul%
 if !errorlevel! EQU 0 (
-echo ÕıÔÚ½« Windows µØÇø¸ü¸ÄÎªÃÀ¹ú          [³É¹¦]
+echo æ­£åœ¨å°† Windows åœ°åŒºæ›´æ”¹ä¸ºç¾å›½          [æˆåŠŸ]
 ) else (
-call :dk_color %Red% "Changing Windows Region To USA          [Ê§°Ü]"
+call :dk_color %Red% "Changing Windows Region To USA          [å¤±è´¥]"
 )
 )
 
@@ -806,7 +806,7 @@ call :dk_color %Red% "Changing Windows Region To USA          [Ê§°Ü]"
 
 if not exist %SystemRoot%\system32\ClipUp.exe (
 call :dk_color %Red% "Checking ClipUp.exe File                [Not found, aborting the process]"
-call :dk_color2 %Blue% "²é¿´´ËÒ³ÒÔ»ñµÃ°ïÖú" %_Yellow% " %mas%troubleshoot"
+call :dk_color2 %Blue% "æŸ¥çœ‹æ­¤é¡µä»¥è·å¾—å¸®åŠ©" %_Yellow% " %mas%troubleshoot"
 goto :dl_final
 )
 
@@ -822,12 +822,12 @@ call :hwiddata ticket
 copy /y /b "%tdir%\GenuineTicket" "%tdir%\GenuineTicket.xml" %nul%
 
 if not exist "%tdir%\GenuineTicket.xml" (
-call :dk_color %Red% "Éú³É GenuineTicket.xml            [Failed, aborting the process]"
+call :dk_color %Red% "ç”Ÿæˆ GenuineTicket.xml            [Failed, aborting the process]"
 echo [%encoded%]
 if exist "%tdir%\Genuine*" del /f /q "%tdir%\Genuine*" %nul%
 goto :dl_final
 ) else (
-echo Éú³É GenuineTicket.xml            [³É¹¦]
+echo ç”Ÿæˆ GenuineTicket.xml            [æˆåŠŸ]
 )
 
 set "_xmlexist=if exist "%tdir%\GenuineTicket.xml""
@@ -841,7 +841,7 @@ net start ClipSVC /y %nul%
 %_xmlexist% (
 set error=1
 if exist "%tdir%\*.xml" del /f /q "%tdir%\*.xml" %nul%
-call :dk_color %Red% "Installing GenuineTicket.xml            [ClipSVC ·şÎñÖØÆôÊ§°Ü£¬µÈ´ıÖĞ...]"
+call :dk_color %Red% "Installing GenuineTicket.xml            [ClipSVC æœåŠ¡é‡å¯å¤±è´¥ï¼Œç­‰å¾…ä¸­...]"
 )
 )
 
@@ -865,7 +865,7 @@ call :dk_color %Red% "Installing GenuineTicket.xml            [Failed With clipu
 if exist "%ProgramData%\Microsoft\Windows\ClipSVC\Install\Migration\*.xml" (
 set error=1
 set rebuildinfo=1
-call :dk_color %Red% "Checking Ticket Migration               [Ê§°Ü]"
+call :dk_color %Red% "Checking Ticket Migration               [å¤±è´¥]"
 )
 
 if defined applist if not defined showfix if defined rebuildinfo (
@@ -880,7 +880,7 @@ if exist "%tdir%\Genuine*" del /f /q "%tdir%\Genuine*" %nul%
 call :dk_product
 
 echo:
-echo ¼¤»î...
+echo æ¿€æ´»...
 
 call :dk_act
 call :dk_checkperm
@@ -919,7 +919,7 @@ if defined resfail (
 set error=1
 echo:
 call :dk_color %Red% "Checking Licensing Servers              [Failed To Connect]"
-call :dk_color2 %Blue% "²é¿´´ËÒ³ÒÔ»ñµÃ°ïÖú" %_Yellow% " %mas%licensing-servers-issue"
+call :dk_color2 %Blue% "æŸ¥çœ‹æ­¤é¡µä»¥è·å¾—å¸®åŠ©" %_Yellow% " %mas%licensing-servers-issue"
 )
 )
 
@@ -932,9 +932,9 @@ echo:
 set "_ident=HKU\S-1-5-19\SOFTWARE\Microsoft\IdentityCRL"
 reg delete "!_ident!" /f %nul%
 reg query "!_ident!" %nul% && (
-call :dk_color %Red% "Deleting a Registry                     [Ê§°Ü] [!_ident!]"
+call :dk_color %Red% "Deleting a Registry                     [å¤±è´¥] [!_ident!]"
 ) || (
-echo É¾³ı×¢²á±í                     [³É¹¦] [!_ident!]
+echo åˆ é™¤æ³¨å†Œè¡¨                     [æˆåŠŸ] [!_ident!]
 )
 
 REM Refresh some services and license status
@@ -952,7 +952,7 @@ echo "%error_code%" | findstr /i "0x80072e 0x80072f" %nul% && (
 set error=1
 echo:
 call :dk_color %Red% "Checking Internet Issues                [Found] %error_code%"
-call :dk_color2 %Blue% "²é¿´´ËÒ³ÒÔ»ñµÃ°ïÖú" %_Yellow% " %mas%licensing-servers-issue"
+call :dk_color2 %Blue% "æŸ¥çœ‹æ­¤é¡µä»¥è·å¾—å¸®åŠ©" %_Yellow% " %mas%licensing-servers-issue"
 )
 )
 
@@ -968,7 +968,7 @@ call :dk_color %Blue% "At the time of writing this, HWID Activation was not supp
 call :dk_color %Blue% "Use KMS38 Activation option."
 ) else (
 if not defined error call :dk_color %Blue% "%_fixmsg%"
-call :dk_color2 %Blue% "²é¿´´ËÒ³ÒÔ»ñµÃ°ïÖú" %_Yellow% " %mas%troubleshoot"
+call :dk_color2 %Blue% "æŸ¥çœ‹æ­¤é¡µä»¥è·å¾—å¸®åŠ©" %_Yellow% " %mas%troubleshoot"
 )
 )
 
@@ -981,13 +981,13 @@ echo:
 if defined regionchange (
 %psc% "Set-WinHomeLocation -GeoId %nation%" %nul%
 if !errorlevel! EQU 0 (
-echo »¹Ô­ Windows ÇøÓò                [³É¹¦]
+echo è¿˜åŸ Windows åŒºåŸŸ                [æˆåŠŸ]
 ) else (
-call :dk_color %Red% "Restoring Windows Region                [Ê§°Ü] [%name% - %nation%]"
+call :dk_color %Red% "Restoring Windows Region                [å¤±è´¥] [%name% - %nation%]"
 )
 )
 
-if %osSKU%==175 call :dk_color %Red% "%winos% ²»Ö§³ÖÔÚ·Ç Azure Æ½Ì¨ÉÏ¼¤»î¡£"
+if %osSKU%==175 call :dk_color %Red% "%winos% ä¸æ”¯æŒåœ¨é Azure å¹³å°ä¸Šæ¿€æ´»ã€‚"
 
 goto :dk_done
 
@@ -1143,11 +1143,11 @@ if defined serv_cste (set "serv_cste=!serv_cste! %%#") else (set "serv_cste=%%#"
 )
 )
 
-if defined serv_csts call :dk_color %Gray% "Enabling Disabled Services              [³É¹¦] [%serv_csts%]"
+if defined serv_csts call :dk_color %Gray% "Enabling Disabled Services              [æˆåŠŸ] [%serv_csts%]"
 
 if defined serv_cste (
 set error=1
-call :dk_color %Red% "Enabling Disabled Services              [Ê§°Ü] [%serv_cste%]"
+call :dk_color %Red% "Enabling Disabled Services              [å¤±è´¥] [%serv_cste%]"
 )
 
 ::========================================================================================================================================
@@ -1170,7 +1170,7 @@ if defined checkerror if defined serv_e (set "serv_e=!serv_e!, %%#-!errorcode!")
 
 if defined serv_e (
 set error=1
-call :dk_color %Red% "Starting Services                       [Ê§°Ü] [%serv_e%]"
+call :dk_color %Red% "Starting Services                       [å¤±è´¥] [%serv_e%]"
 echo %serv_e% | findstr /i "ClipSVC-1058 sppsvc-1058" %nul% && (
 call :dk_color %Blue% "Restart the system to fix disabled service error 1058."
 set showfix=1
@@ -1255,7 +1255,7 @@ echo "%error_code%" | findstr /i "0x800410 0x800440" %nul1% && set wmifailed=1& 
 if defined wmifailed (
 set error=1
 call :dk_color %Red% "Checking WMI                            [Not Responding]"
-call :dk_color %Blue% "ÔÚ MAS ÖĞ£¬×ªµ½¹ÊÕÏÅÅ³ı²¢ÔËĞĞĞŞ¸´ WMI Ñ¡Ïî¡£"
+call :dk_color %Blue% "åœ¨ MAS ä¸­ï¼Œè½¬åˆ°æ•…éšœæ’é™¤å¹¶è¿è¡Œä¿®å¤ WMI é€‰é¡¹ã€‚"
 set showfix=1
 )
 
@@ -1544,7 +1544,7 @@ set _rem=0
 
 cls
 color 07
-title  Ohook ¼¤»î
+title  Ohook æ¿€æ´»
 
 set _args=
 set _elev=
@@ -1599,19 +1599,19 @@ set "_Yellow="Black" "Yellow""
 set "nceline=echo: &echo ==== ERROR ==== &echo:"
 set "eline=echo: &call :dk_color %Red% "==== ERROR ====" &echo:"
 if %~z0 GEQ 200000 (
-set "_exitmsg=·µ»Ø"
-set "_fixmsg=·µ»ØÖ÷²Ëµ¥£¬Ñ¡Ôñ "¹ÊÕÏÅÅ³ı "²¢ÔËĞĞ "ĞŞ¸´Ğí¿É "Ñ¡Ïî¡£"
+set "_exitmsg=è¿”å›"
+set "_fixmsg=è¿”å›ä¸»èœå•ï¼Œé€‰æ‹© "æ•…éšœæ’é™¤ "å¹¶è¿è¡Œ "ä¿®å¤è®¸å¯ "é€‰é¡¹ã€‚"
 ) else (
-set "_exitmsg=ÍË³ö"
-set "_fixmsg=ÔÚ MAS ÎÄ¼ş¼ĞÖĞ£¬ÔËĞĞ "¹ÊÕÏÅÅ³ı "½Å±¾²¢Ñ¡Ôñ "ĞŞ¸´Ğí¿É "Ñ¡Ïî¡£"
+set "_exitmsg=é€€å‡º"
+set "_fixmsg=åœ¨ MAS æ–‡ä»¶å¤¹ä¸­ï¼Œè¿è¡Œ "æ•…éšœæ’é™¤ "è„šæœ¬å¹¶é€‰æ‹© "ä¿®å¤è®¸å¯ "é€‰é¡¹ã€‚"
 )
 
 ::========================================================================================================================================
 
 if %winbuild% LSS 9200 (
 %eline%
-echo ¼ì²âµ½²»Ö§³ÖµÄ²Ù×÷ÏµÍ³°æ±¾ [%winbuild%]¡£
-echo Ohook Activation Ö§³Ö Windows 8 ¼°¸ü¸ß°æ±¾¼°ÆäÍ¬µ×²ãµÄWindows Server¡£
+echo æ£€æµ‹åˆ°ä¸æ”¯æŒçš„æ“ä½œç³»ç»Ÿç‰ˆæœ¬ [%winbuild%]ã€‚
+echo Ohook Activation æ”¯æŒ Windows 8 åŠæ›´é«˜ç‰ˆæœ¬åŠå…¶åŒåº•å±‚çš„Windows Serverã€‚
 goto dk_done
 )
 
@@ -1640,7 +1640,7 @@ if %_rem%==1 goto :oh_uninstall
 if %_unattended%==0 (
 cls
 mode 76, 25
-title  Ohook ¼¤»î
+title  Ohook æ¿€æ´»
 
 echo:
 echo:
@@ -1648,17 +1648,17 @@ echo:
 echo:
 echo         ____________________________________________________________
 echo:
-echo                 [1] °²×° Ohook Office ¼¤»î
+echo                 [1] å®‰è£… Ohook Office æ¿€æ´»
 echo:
-echo                 [2] Ğ¶ÔØ
+echo                 [2] å¸è½½
 echo                 ____________________________________________
 echo:
-echo                 [3] ÏÂÔØ Office
+echo                 [3] ä¸‹è½½ Office
 echo:
 echo                 [0] %_exitmsg%
 echo         ____________________________________________________________
 echo: 
-call :dk_color2 %_White% "              " %_Green% "Í¨¹ı¼üÅÌÊäÈë²Ëµ¥Ñ¡Ïî [1,2,3,0]"
+call :dk_color2 %_White% "              " %_Green% "é€šè¿‡é”®ç›˜è¾“å…¥èœå•é€‰é¡¹ [1,2,3,0]"
 choice /C:1230 /N
 set _el=!errorlevel!
 if !_el!==4  exit /b
@@ -1676,10 +1676,10 @@ cls
 mode 128, 32
 %psc% "&{$W=$Host.UI.RawUI.WindowSize;$B=$Host.UI.RawUI.BufferSize;$W.Height=32;$B.Height=300;$Host.UI.RawUI.WindowSize=$W;$Host.UI.RawUI.BufferSize=$B;}"
 
-title  Ohook ¼¤»î
+title  Ohook æ¿€æ´»
 
 echo:
-echo ³õÊ¼»¯...
+echo åˆå§‹åŒ–...
 call :dk_product
 call :dk_ckeckwmic
 
@@ -1688,8 +1688,8 @@ call :dk_ckeckwmic
 sc start sppsvc %nul%
 if %errorlevel% NEQ 1056 if %errorlevel% NEQ 0 (
 echo:
-echo ´íÎó´úÂë: %errorlevel%
-call :dk_color %Red% "Æô¶¯ [sppsvc] ·şÎñÊ§°Ü£¬Ê£Óà¹ı³Ì¿ÉÄÜĞèÒªºÜ³¤Ê±¼ä..."
+echo é”™è¯¯ä»£ç : %errorlevel%
+call :dk_color %Red% "å¯åŠ¨ [sppsvc] æœåŠ¡å¤±è´¥ï¼Œå‰©ä½™è¿‡ç¨‹å¯èƒ½éœ€è¦å¾ˆé•¿æ—¶é—´..."
 echo:
 )
 
@@ -1701,7 +1701,7 @@ cls
 echo:
 for /f "skip=2 tokens=2*" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PROCESSOR_ARCHITECTURE') do set osarch=%%b
 for /f "tokens=6-7 delims=[]. " %%i in ('ver') do if "%%j"=="" (set fullbuild=%%i) else (set fullbuild=%%i.%%j)
-echo ¼ì²é²Ù×÷ÏµÍ³ĞÅÏ¢                        [%winos% ^| %fullbuild% ^| %osarch%]
+echo æ£€æŸ¥æ“ä½œç³»ç»Ÿä¿¡æ¯                        [%winos% ^| %fullbuild% ^| %osarch%]
 
 ::========================================================================================================================================
 
@@ -1715,12 +1715,12 @@ if %_WSH% EQU 0 (
 reg add "HKLM\Software\Microsoft\Windows Script Host\Settings" /v Enabled /t REG_DWORD /d 1 /f %nul%
 reg add "HKCU\Software\Microsoft\Windows Script Host\Settings" /v Enabled /t REG_DWORD /d 1 /f %nul%
 if not "%arch%"=="x86" reg add "HKLM\Software\Microsoft\Windows Script Host\Settings" /v Enabled /t REG_DWORD /d 1 /f /reg:32 %nul%
-echo ÆôÓÃ Windows ½Å±¾ÍĞ¹Ü            [³É¹¦]
+echo å¯ç”¨ Windows è„šæœ¬æ‰˜ç®¡            [æˆåŠŸ]
 )
 
 ::========================================================================================================================================
 
-echo Æô¶¯Õï¶Ï²âÊÔ...
+echo å¯åŠ¨è¯Šæ–­æµ‹è¯•...
 
 set "_serv=sppsvc Winmgmt"
 set officeact=1
@@ -1743,7 +1743,7 @@ if %winbuild% GEQ 10240 %psc% "Get-AppxPackage -name "Microsoft.Office.Desktop""
 
 if not "%o14msi%%o14c2r%%o16uwp%"=="" (
 echo:
-call :dk_color %Red% "¼ì²é²»Ö§³ÖµÄ Office °²×°³ÌĞò     [ %o14msi%%o14c2r%%o16uwp%]"
+call :dk_color %Red% "æ£€æŸ¥ä¸æ”¯æŒçš„ Office å®‰è£…ç¨‹åº     [ %o14msi%%o14c2r%%o16uwp%]"
 )
 
 ::========================================================================================================================================
@@ -1781,7 +1781,7 @@ call :dk_color %Red% "Checking Installed Office               [Not Found]"
 
 if %winbuild% GEQ 10240 %psc% "Get-AppxPackage -name "Microsoft.MicrosoftOfficeHub"" | find /i "Office" %nul1% && (
 echo:
-echo ÄúÖ»°²×°ÁË Office dashboard Ó¦ÓÃ³ÌĞò£¬ÄúĞèÒª°²×°ÍêÕûµÄ Office °æ±¾¡£
+echo æ‚¨åªå®‰è£…äº† Office dashboard åº”ç”¨ç¨‹åºï¼Œæ‚¨éœ€è¦å®‰è£…å®Œæ•´çš„ Office ç‰ˆæœ¬ã€‚
 )
 echo:
 call :dk_color %Blue% "Download and install Office from below URL and try again."
@@ -1829,7 +1829,7 @@ set "_sppcPath=%SystemRoot%\System32\sppc.dll"
 )
 
 echo:
-echo ¼¤»î Office 15.0 %_oArch% C2R...
+echo æ¿€æ´» Office 15.0 %_oArch% C2R...
 
 if not defined _oIds (
 call :dk_color %Red% "Checking Installed Products             [Product IDs not found. Aborting activation...]"
@@ -1873,7 +1873,7 @@ set "_sppcPath=%SystemRoot%\System32\sppc.dll"
 )
 
 echo:
-echo ¼¤»î Office 16.0 %_oArch% C2R...
+echo æ¿€æ´» Office 16.0 %_oArch% C2R...
 
 if not defined _oIds (
 call :dk_color %Red% "Checking Installed Products             [Product IDs not found. Aborting activation...]"
@@ -1900,9 +1900,9 @@ reg delete %kNext% /f %nul%
 
 if defined sub_next (
 reg query %kNext%\LicensingNext %nul% && (
-call :dk_color %Red% "Removing Office vNext Block             [Ê§°Ü]"
+call :dk_color %Red% "Removing Office vNext Block             [å¤±è´¥]"
 ) || (
-echo ÒÆ³ı Office vNext ¿é             [³É¹¦]
+echo ç§»é™¤ Office vNext å—             [æˆåŠŸ]
 )
 )
 
@@ -1912,7 +1912,7 @@ echo ÒÆ³ı Office vNext ¿é             [³É¹¦]
 ::  A simple registry entry can skip this check
 
 if defined _sublic (
-echo Ìí¼Ó×¢²áÒÔÌø¹ıĞí¿ÉÖ¤¼ì²é      [³É¹¦]
+echo æ·»åŠ æ³¨å†Œä»¥è·³è¿‡è®¸å¯è¯æ£€æŸ¥      [æˆåŠŸ]
 reg add HKCU\Software\Microsoft\Office\16.0\Common\Licensing\Resiliency /v "TimeOfLastHeartbeatFailure" /t REG_SZ /d "2033-08-18T22:18:45Z" /f %nul%
 )
 
@@ -1930,7 +1930,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPla
 )
 reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\0ff1ce15-a989-479d-af46-f275c6370663" /f %nul%
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\0ff1ce15-a989-479d-af46-f275c6370663" /f /v KeyManagementServiceName /t REG_SZ /d "10.0.0.10" %nul%
-echo Ìí¼Ó×¢²á·ÀÖ¹ºá·ù¾¯¸æ          [³É¹¦]
+echo æ·»åŠ æ³¨å†Œé˜²æ­¢æ¨ªå¹…è­¦å‘Š          [æˆåŠŸ]
 )
 )
 
@@ -1964,8 +1964,8 @@ set upk_result=2
 )
 
 if not %upk_result%==0 echo:
-if %upk_result%==1 echo Ğ¶ÔØÆäËû/Grace ÃÜÔ¿           [³É¹¦]
-if %upk_result%==2 call :dk_color %Red% "Ğ¶ÔØÆäËû/Grace ÃÜÔ¿           [Ê§°Ü]"
+if %upk_result%==1 echo å¸è½½å…¶ä»–/Grace å¯†é’¥           [æˆåŠŸ]
+if %upk_result%==2 call :dk_color %Red% "å¸è½½å…¶ä»–/Grace å¯†é’¥           [å¤±è´¥]"
 
 ::========================================================================================================================================
 
@@ -1982,12 +1982,12 @@ if !errorlevel! NEQ 0 cscript //nologo %windir%\system32\slmgr.vbs /rilc %nul%
 echo:
 if not defined error (
 call :dk_color %Green% "Office is permanently activated."
-echo °ïÖú: %mas%troubleshoot
+echo å¸®åŠ©: %mas%troubleshoot
 ) else (
 call :dk_color %Red% "Some errors were detected."
 if not defined ierror if not defined showfix if not defined serv_cor if not defined serv_cste call :dk_color %Blue% "%_fixmsg%"
 echo:
-call :dk_color2 %Blue% "²é¿´´ËÒ³ÒÔ»ñµÃ°ïÖú" %_Yellow% " %mas%troubleshoot"
+call :dk_color2 %Blue% "æŸ¥çœ‹æ­¤é¡µä»¥è·å¾—å¸®åŠ©" %_Yellow% " %mas%troubleshoot"
 )
 
 goto :dk_done
@@ -1998,7 +1998,7 @@ goto :dk_done
 
 cls
 mode 99, 28
-title  Ğ¶ÔØ Ohook ¼¤»î
+title  å¸è½½ Ohook æ¿€æ´»
 
 set _present=
 set _unerror=
@@ -2006,7 +2006,7 @@ call :oh_reset
 call :oh_getpath
 
 echo:
-echo Ğ¶ÔØ Ohook ¼¤»î...
+echo å¸è½½ Ohook æ¿€æ´»...
 echo:
 
 if defined o16c2r_reg (for /f "skip=2 tokens=2*" %%a in ('"reg query %o16c2r_reg% /v InstallPath" %nul6%') do (set "_16CHook=%%b\root\vfs"))
@@ -2037,13 +2037,13 @@ if exist "%%~A\Microsoft %%~G\root\vfs\%%#\sppc*dll" (set _present=1& del /s /f 
 
 reg query HKCU\Software\Microsoft\Office\16.0\Common\Licensing\Resiliency /s %nul2% | find /i "2033" %nul% && (
 echo:
-echo É¾³ı - HKCU\Software\Microsoft\Office\16.0\Common\Licensing\Resiliency
+echo åˆ é™¤ - HKCU\Software\Microsoft\Office\16.0\Common\Licensing\Resiliency
 reg delete HKCU\Software\Microsoft\Office\16.0\Common\Licensing\Resiliency /f
 )
 
 reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\0ff1ce15-a989-479d-af46-f275c6370663" %nul% && (
 echo:
-echo É¾³ı - ÓÃÓÚ·ÀÖ¹·ÇÕı°æºá·ù¾¯¸æµÄ×¢²á±íÃÜÔ¿
+echo åˆ é™¤ - ç”¨äºé˜²æ­¢éæ­£ç‰ˆæ¨ªå¹…è­¦å‘Šçš„æ³¨å†Œè¡¨å¯†é’¥
 reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\0ff1ce15-a989-479d-af46-f275c6370663" /f
 )
 
@@ -2055,7 +2055,7 @@ echo ___________________________________________________________________________
 echo:
 
 if not defined _present (
-echo Î´°²×° Ohook ¼¤»î¡£
+echo æœªå®‰è£… Ohook æ¿€æ´»ã€‚
 ) else (
 if defined _unerror (
 call :dk_color %Red% "Failed to uninstall Ohook activation."
@@ -2123,9 +2123,9 @@ if %errorcode% NEQ 0 set "errorcode=[0x%=ExitCode%]"
 
 if %errorcode% EQU 0 (
 call :dk_refresh
-echo °²×°Í¨ÓÃ²úÆ·ÃÜÔ¿          [%_key%] [%_prod%] [%_lic%] [³É¹¦]
+echo å®‰è£…é€šç”¨äº§å“å¯†é’¥          [%_key%] [%_prod%] [%_lic%] [æˆåŠŸ]
 ) else (
-call :dk_color %Red% "°²×°Í¨ÓÃ²úÆ·ÃÜÔ¿          [%_key%] [%_prod%] [Ê§°Ü] %errorcode%"
+call :dk_color %Red% "å®‰è£…é€šç”¨äº§å“å¯†é’¥          [%_key%] [%_prod%] [å¤±è´¥] %errorcode%"
 if not defined error (
 call :dk_color %Blue% "%_fixmsg%"
 set showfix=1
@@ -2165,10 +2165,10 @@ cscript //nologo %windir%\system32\slmgr.vbs /ilc "!_oLPath!\%%~nx#" %nul%
 call :oh_actids
 
 echo "!oapplist!" | find /i "!_actid!" %nul1% && (
-call :dk_color %Gray% "Installing Missing License Files        [Office %oVer%.0 %_prod%] [³É¹¦]"
+call :dk_color %Gray% "Installing Missing License Files        [Office %oVer%.0 %_prod%] [æˆåŠŸ]"
 ) || (
 set error=1
-call :dk_color %Red% "Installing Missing License Files        [Office %oVer%.0 %_prod%] [Ê§°Ü]"
+call :dk_color %Red% "Installing Missing License Files        [Office %oVer%.0 %_prod%] [å¤±è´¥]"
 )
 
 exit /b
@@ -2194,12 +2194,12 @@ if not exist "%_hookPath%\sppc.dll" set ierror=1
 
 echo:
 if not defined ierror (
-echo ½«ÏµÍ³µÄ sppc.dll Á¬½Óµ½         ["%_hookPath%\sppcs.dll"] [³É¹¦]
-echo ÌáÈ¡×Ô¶¨Òå %_hook% µ½         ["%_hookPath%\sppc.dll"] [³É¹¦]
+echo å°†ç³»ç»Ÿçš„ sppc.dll è¿æ¥åˆ°         ["%_hookPath%\sppcs.dll"] [æˆåŠŸ]
+echo æå–è‡ªå®šä¹‰ %_hook% åˆ°         ["%_hookPath%\sppc.dll"] [æˆåŠŸ]
 ) else (
 set error=1
-call :dk_color %Red% "½«ÏµÍ³µÄ sppc.dll Á¬½Óµ½             [Ê§°Ü]"
-call :dk_color %Red% "ÌáÈ¡×Ô¶¨Òå %_hook% µ½            [Ê§°Ü]"
+call :dk_color %Red% "å°†ç³»ç»Ÿçš„ sppc.dll è¿æ¥åˆ°             [å¤±è´¥]"
+call :dk_color %Red% "æå–è‡ªå®šä¹‰ %_hook% åˆ°            [å¤±è´¥]"
 echo ["%_hookPath%\sppc.dll"]
 call :dk_color %Blue% "Close Office apps if they are running and try again."
 )
@@ -2208,9 +2208,9 @@ if not defined ierror (
 if defined hasherror (
 set error=1
 set ierror=1
-call :dk_color %Red% "Modifying Hash of Custom %_hook%     [Ê§°Ü]"
+call :dk_color %Red% "Modifying Hash of Custom %_hook%     [å¤±è´¥]"
 ) else (
-echo ĞŞ¸Ä×Ô¶¨Òå %_hook% µÄ¹şÏ£Öµ     [³É¹¦]
+echo ä¿®æ”¹è‡ªå®šä¹‰ %_hook% çš„å“ˆå¸Œå€¼     [æˆåŠŸ]
 )
 )
 
@@ -2234,7 +2234,7 @@ call :oh_installkey
 ) else (
 set error=1
 call :dk_color %Red% "Checking Product In Script              [Office %oVer%.0 %%# not found in script]"
-echo È·±£ÄúÊ¹ÓÃµÄÊÇ×îĞÂµÄ MAS ½Å±¾¡£
+echo ç¡®ä¿æ‚¨ä½¿ç”¨çš„æ˜¯æœ€æ–°çš„ MAS è„šæœ¬ã€‚
 )
 )
 
@@ -2286,7 +2286,7 @@ set "_sppcPath=%SystemRoot%\System32\sppc.dll"
 call :oh_msiproducts
 
 echo:
-echo ¼¤»î Office %1.0 %_oArch% MSI...
+echo æ¿€æ´» Office %1.0 %_oArch% MSI...
 
 if not defined _oIds (
 set error=1
@@ -2766,7 +2766,7 @@ set _NoEditionChange=0
 
 cls
 color 07
-title  KMS38 ¼¤»î
+title  KMS38 æ¿€æ´»
 
 set _args=
 set _elev=
@@ -2836,8 +2836,8 @@ set "specific_kms=SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectio
 
 if %winbuild% LSS 14393 (
 %eline%
-echo ¼ì²âµ½²»Ö§³ÖµÄ²Ù×÷ÏµÍ³°æ±¾ [%winbuild%].
-echo KMS38 ¼¤»îÖ§³Ö Windows 10/11/Server£¬14393 ¼°¸ü¸ß°æ±¾¡£
+echo æ£€æµ‹åˆ°ä¸æ”¯æŒçš„æ“ä½œç³»ç»Ÿç‰ˆæœ¬ [%winbuild%].
+echo KMS38 æ¿€æ´»æ”¯æŒ Windows 10/11/Serverï¼Œ14393 åŠæ›´é«˜ç‰ˆæœ¬ã€‚
 goto dk_done
 )
 
@@ -2866,7 +2866,7 @@ if %_rem%==1 goto :k_uninstall
 if %_unattended%==0 (
 cls
 mode 76, 25
-title  KMS38 ¼¤»î
+title  KMS38 æ¿€æ´»
 
 echo:
 echo:
@@ -2874,15 +2874,15 @@ echo:
 echo:
 echo         ____________________________________________________________
 echo:
-echo                 [1] KMS38 ¼¤»î
+echo                 [1] KMS38 æ¿€æ´»
 echo                 ____________________________________________
 echo:
-echo                 [2] ÒÆ³ı KM38 ±£»¤
+echo                 [2] ç§»é™¤ KM38 ä¿æŠ¤
 echo:
 echo                 [0] %_exitmsg%
 echo         ____________________________________________________________
 echo: 
-call :dk_color2 %_White% "              " %_Green% "Í¨¹ı¼üÅÌÊäÈë²Ëµ¥Ñ¡Ïî [1,2,0]"
+call :dk_color2 %_White% "              " %_Green% "é€šè¿‡é”®ç›˜è¾“å…¥èœå•é€‰é¡¹ [1,2,0]"
 choice /C:120 /N
 set _el=!errorlevel!
 if !_el!==3  exit /b
@@ -2897,10 +2897,10 @@ goto :k_menu
 
 cls
 mode 108, 34
-title  KMS38 ¼¤»î
+title  KMS38 æ¿€æ´»
 
 echo:
-echo ³õÊ¼»¯...
+echo åˆå§‹åŒ–...
 call :dk_product
 call :dk_ckeckwmic
 
@@ -2909,8 +2909,8 @@ call :dk_ckeckwmic
 sc start sppsvc %nul%
 if %errorlevel% NEQ 1056 if %errorlevel% NEQ 0 (
 echo:
-echo ´íÎó´úÂë: %errorlevel%
-call :dk_color %Red% "Æô¶¯ [sppsvc] ·şÎñÊ§°Ü£¬Ê£Óà¹ı³Ì¿ÉÄÜĞèÒªºÜ³¤Ê±¼ä..."
+echo é”™è¯¯ä»£ç : %errorlevel%
+call :dk_color %Red% "å¯åŠ¨ [sppsvc] æœåŠ¡å¤±è´¥ï¼Œå‰©ä½™è¿‡ç¨‹å¯èƒ½éœ€è¦å¾ˆé•¿æ—¶é—´..."
 echo:
 )
 
@@ -2924,11 +2924,11 @@ cls
 echo ___________________________________________________________________________________________
 echo:
 call :dk_color2 %_White% "     " %Green% "Checking: %winos% is Permanently Activated."
-call :dk_color2 %_White% "     " %Gray% "ÎŞĞè¼¤»î"¡£
+call :dk_color2 %_White% "     " %Gray% "æ— éœ€æ¿€æ´»"ã€‚
 echo ___________________________________________________________________________________________
 if %_unattended%==1 goto dk_done
 echo:
-choice /C:10 /N /M ">    [1] ¼¤»î [0] %_exitmsg% : "
+choice /C:10 /N /M ">    [1] æ¿€æ´» [0] %_exitmsg% : "
 if errorlevel 2 exit /b
 )
 cls
@@ -2949,14 +2949,14 @@ reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID %nul2
 %eline%
 echo [%winos% ^| %winbuild%]
 if defined _evalserv (
-echo Windows ServerÆÀ¹À°æ±¾ÎŞ·¨¼¤»î¡£½«Æä×ª»»ÎªÍêÕûµÄWindows Server²Ù×÷ÏµÍ³¡£
+echo Windows Serverè¯„ä¼°ç‰ˆæœ¬æ— æ³•æ¿€æ´»ã€‚å°†å…¶è½¬æ¢ä¸ºå®Œæ•´çš„Windows Serveræ“ä½œç³»ç»Ÿã€‚
 echo:
-echo ÔÚ MAS ÖĞ£¬½øÈë ÔÓÏî ²¢Ê¹ÓÃ "ĞŞ¸ÄWindowsÏµÍ³°æ±¾ "Ñ¡Ïî¡£
+echo åœ¨ MAS ä¸­ï¼Œè¿›å…¥ æ‚é¡¹ å¹¶ä½¿ç”¨ "ä¿®æ”¹Windowsç³»ç»Ÿç‰ˆæœ¬ "é€‰é¡¹ã€‚
 ) else (
-echo ÆÀ¹À°æÎŞ·¨¼¤»î¡£
-echo ÄúĞèÒª°²×° %winos% µÄÍêÕû°æ±¾
+echo è¯„ä¼°ç‰ˆæ— æ³•æ¿€æ´»ã€‚
+echo æ‚¨éœ€è¦å®‰è£… %winos% çš„å®Œæ•´ç‰ˆæœ¬
 echo:
-echo ´ÓÕâÀïÏÂÔØ£º
+echo ä»è¿™é‡Œä¸‹è½½ï¼š
 echo %mas%genuine-installation-media.html
 )
 goto dk_done
@@ -2973,9 +2973,9 @@ if exist "%SystemRoot%\Servicing\Packages\Microsoft-Windows-Server*CorEdition~*.
 if defined a_cor (
 if not exist "!_work!\clipup.exe" (
 %eline%
-echo ·şÎñÆ÷ Cor/Acor [ÎŞÍ¼ĞÎÓÃ»§½çÃæ] °æ±¾ÖĞ²»´æÔÚ clipup.exe¡£
-echo ËüÊÇ KMS38 ¼¤»îËù±ØĞèµÄ¡£
-echo Çë²é¿´ÒÔÏÂÒ³ÃæÁË½âÈçºÎ¼¤»î¡£
+echo æœåŠ¡å™¨ Cor/Acor [æ— å›¾å½¢ç”¨æˆ·ç•Œé¢] ç‰ˆæœ¬ä¸­ä¸å­˜åœ¨ clipup.exeã€‚
+echo å®ƒæ˜¯ KMS38 æ¿€æ´»æ‰€å¿…éœ€çš„ã€‚
+echo è¯·æŸ¥çœ‹ä»¥ä¸‹é¡µé¢äº†è§£å¦‚ä½•æ¿€æ´»ã€‚
 echo %mas%kms38.html
 goto dk_done
 )
@@ -3007,7 +3007,7 @@ if not defined osSKU set osSKU=%regSKU%
 
 if not defined osSKU (
 %eline%
-echo ¼ì²âµ½²»ÕıÈ·µÄSKUÖµ£¬³ÌĞòÖÕÖ¹...
+echo æ£€æµ‹åˆ°ä¸æ­£ç¡®çš„SKUå€¼ï¼Œç¨‹åºç»ˆæ­¢...
 goto dk_done
 )
 
@@ -3019,7 +3019,7 @@ cls
 echo:
 for /f "skip=2 tokens=2*" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PROCESSOR_ARCHITECTURE') do set arch=%%b
 for /f "tokens=6-7 delims=[]. " %%i in ('ver') do if "%%j"=="" (set fullbuild=%%i) else (set fullbuild=%%i.%%j)
-echo ¼ì²é²Ù×÷ÏµÍ³ĞÅÏ¢                        [%winos% ^| %fullbuild% ^| %arch%]
+echo æ£€æŸ¥æ“ä½œç³»ç»Ÿä¿¡æ¯                        [%winos% ^| %fullbuild% ^| %arch%]
 
 ::========================================================================================================================================
 
@@ -3033,12 +3033,12 @@ if %_WSH% EQU 0 (
 reg add "HKLM\Software\Microsoft\Windows Script Host\Settings" /v Enabled /t REG_DWORD /d 1 /f %nul%
 reg add "HKCU\Software\Microsoft\Windows Script Host\Settings" /v Enabled /t REG_DWORD /d 1 /f %nul%
 if not "%arch%"=="x86" reg add "HKLM\Software\Microsoft\Windows Script Host\Settings" /v Enabled /t REG_DWORD /d 1 /f /reg:32 %nul%
-echo ÆôÓÃ Windows ½Å±¾ÍĞ¹Ü            [³É¹¦]
+echo å¯ç”¨ Windows è„šæœ¬æ‰˜ç®¡            [æˆåŠŸ]
 )
 
 ::========================================================================================================================================
 
-echo Æô¶¯Õï¶Ï²âÊÔ...
+echo å¯åŠ¨è¯Šæ–­æµ‹è¯•...
 
 set "_serv=ClipSVC sppsvc KeyIso Winmgmt"
 
@@ -3076,19 +3076,19 @@ set /a UBR=0
 if %osSKU%==191 if defined altkey if defined altedition (
 for /f "skip=2 tokens=2*" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v UBR 2^>nul') do if not errorlevel 1 set /a UBR=%%b
 if %winbuild% GEQ 19044 if !UBR! LSS 2788 (
-call :dk_color %Blue% "Òª¼¤»î IotEnterpriseS KMS38£¬Windows ±ØĞëÉı¼¶µ½ 19044.2788 °æ»ò¸ü¸ß°æ±¾¡£"
+call :dk_color %Blue% "è¦æ¿€æ´» IotEnterpriseS KMS38ï¼ŒWindows å¿…é¡»å‡çº§åˆ° 19044.2788 ç‰ˆæˆ–æ›´é«˜ç‰ˆæœ¬ã€‚"
 )
 )
 
 if not defined key if defined notfoundaltactID (
-call :dk_color %Red% "¼ì²é KMS38 µÄ±¸ÓÃ°æ±¾   [%altedition% Î´ÕÒµ½¼¤»î ID]"
+call :dk_color %Red% "æ£€æŸ¥ KMS38 çš„å¤‡ç”¨ç‰ˆæœ¬   [%altedition% æœªæ‰¾åˆ°æ¿€æ´» ID]"
 )
 
 if not defined key if not defined _gvlk (
 %eline%
 echo [%winos% ^| %winbuild% ^| SKU:%osSKU%]
-echo ÎŞ·¨ÔÚÖ§³ÖµÄ²úÆ·ÁĞ±íÖĞÕÒµ½´Ë²úÆ·¡£
-echo È·±£ÄúÊ¹ÓÃµÄÊÇ×îĞÂ°æ±¾µÄMAS½Å±¾¡£
+echo æ— æ³•åœ¨æ”¯æŒçš„äº§å“åˆ—è¡¨ä¸­æ‰¾åˆ°æ­¤äº§å“ã€‚
+echo ç¡®ä¿æ‚¨ä½¿ç”¨çš„æ˜¯æœ€æ–°ç‰ˆæœ¬çš„MASè„šæœ¬ã€‚
 echo %mas%
 echo:
 goto dk_done
@@ -3100,7 +3100,7 @@ goto dk_done
 
 echo:
 if defined changekey (
-call :dk_color %Blue% "[%altedition%] °æ±¾²úÆ·ÃÜÔ¿½«±»ÓÃÓÚ¼¤»î KMS38¡£"
+call :dk_color %Blue% "[%altedition%] ç‰ˆæœ¬äº§å“å¯†é’¥å°†è¢«ç”¨äºæ¿€æ´» KMS38ã€‚"
 echo:
 )
 
@@ -3108,7 +3108,7 @@ set _partial=
 if not defined key (
 if %_wmic% EQU 1 for /f "tokens=2 delims==" %%# in ('wmic path SoftwareLicensingProduct where "ApplicationID='55c92734-d682-4d71-983e-d6ec3f16059f' and PartialProductKey<>null" Get PartialProductKey /value %nul6%') do set "_partial=%%#"
 if %_wmic% EQU 0 for /f "tokens=2 delims==" %%# in ('%psc% "(([WMISEARCHER]'SELECT PartialProductKey FROM SoftwareLicensingProduct WHERE ApplicationID=''55c92734-d682-4d71-983e-d6ec3f16059f'' AND PartialProductKey IS NOT NULL').Get()).PartialProductKey | %% {echo ('PartialProductKey='+$_)}" %nul6%') do set "_partial=%%#"
-call echo ¼ì²éÒÑ°²×°µÄ²úÆ·ÃÜÔ¿          [Partial Key - %%_partial%%] [Volume:GVLK]
+call echo æ£€æŸ¥å·²å®‰è£…çš„äº§å“å¯†é’¥          [Partial Key - %%_partial%%] [Volume:GVLK]
 )
 
 set error_code=
@@ -3122,9 +3122,9 @@ if !error_code! NEQ 0 set "error_code=[0x!=ExitCode!]"
 
 if !error_code! EQU 0 (
 call :dk_refresh
-echo °²×° KMS ¿Í»§¶Ë°²×°ÃÜÔ¿         [%key%] [³É¹¦]
+echo å®‰è£… KMS å®¢æˆ·ç«¯å®‰è£…å¯†é’¥         [%key%] [æˆåŠŸ]
 ) else (
-call :dk_color %Red% "°²×° KMS ¿Í»§¶Ë°²×°ÃÜÔ¿         [%key%] [Ê§°Ü] !error_code!"
+call :dk_color %Red% "å®‰è£… KMS å®¢æˆ·ç«¯å®‰è£…å¯†é’¥         [%key%] [å¤±è´¥] !error_code!"
 if not defined error (
 call :dk_color %Blue% "%_fixmsg%"
 set showfix=1
@@ -3142,8 +3142,8 @@ if %_wmic% EQU 1 for /f "tokens=2 delims==" %%a in ('"wmic path SoftwareLicensin
 if %_wmic% EQU 0 for /f "tokens=2 delims==" %%a in ('%psc% "(([WMISEARCHER]'SELECT ID FROM SoftwareLicensingProduct WHERE ApplicationID=''55c92734-d682-4d71-983e-d6ec3f16059f'' AND Description like ''%%KMSCLIENT%%'' AND PartialProductKey IS NOT NULL').Get()).ID | %% {echo ('ID='+$_)}" %nul6%') do call set "app=%%a"
 
 if not defined app (
-call :dk_color %Red% "¼ì²éÒÑ°²×°µÄ GVLK ¼¤»î ID   [Not Found] ³ÌĞòÖĞÖ¹..."
-call :dk_color2 %Blue% "²é¿´´ËÒ³ÒÔ»ñµÃ°ïÖú" %_Yellow% " %mas%troubleshoot"
+call :dk_color %Red% "æ£€æŸ¥å·²å®‰è£…çš„ GVLK æ¿€æ´» ID   [Not Found] ç¨‹åºä¸­æ­¢..."
+call :dk_color2 %Blue% "æŸ¥çœ‹æ­¤é¡µä»¥è·å¾—å¸®åŠ©" %_Yellow% " %mas%troubleshoot"
 goto :dk_done
 )
 
@@ -3166,9 +3166,9 @@ set k_error=
 %nul% reg add "HKLM\%specific_kms%\%app%" /f /v KeyManagementServicePort /t REG_SZ /d "1688" || set k_error=1
 
 if not defined k_error (
-echo Ìí¼ÓÌØ¶¨ KMS Ö÷»ú                [LocalHost 127.0.0.2] [³É¹¦]
+echo æ·»åŠ ç‰¹å®š KMS ä¸»æœº                [LocalHost 127.0.0.2] [æˆåŠŸ]
 ) else (
-call :dk_color %Red% "Ìí¼ÓÌØ¶¨ KMS Ö÷»ú                [LocalHost 127.0.0.2] [Ê§°Ü]"
+call :dk_color %Red% "æ·»åŠ ç‰¹å®š KMS ä¸»æœº                [LocalHost 127.0.0.2] [å¤±è´¥]"
 )
 
 ::========================================================================================================================================
@@ -3183,9 +3183,9 @@ popd
 
 echo:
 if exist "!_clipup!" (
-echo ½« clipup.exe ÎÄ¼ş¸´ÖÆµ½              [%systemroot%\System32\] [³É¹¦]
+echo å°† clipup.exe æ–‡ä»¶å¤åˆ¶åˆ°              [%systemroot%\System32\] [æˆåŠŸ]
 ) else (
-call :dk_color %Red% "½« clipup.exe ÎÄ¼ş¸´ÖÆµ½              [%systemroot%\System32\] [Ê§°Ü] ³ÌĞòÖĞÖ¹..."
+call :dk_color %Red% "å°† clipup.exe æ–‡ä»¶å¤åˆ¶åˆ°              [%systemroot%\System32\] [å¤±è´¥] ç¨‹åºä¸­æ­¢..."
 goto :k_final
 )
 )
@@ -3197,8 +3197,8 @@ goto :k_final
 ::  To maximize success rate and get better error details, script will install tickets two times (service restart + clipup -v -o)
 
 if not exist %SystemRoot%\system32\ClipUp.exe (
-call :dk_color %Red% "¼ì²é ClipUp.exe ÎÄ¼ş                [Not Found, ÖĞÖ¹½ø³Ì]"
-call :dk_color2 %Blue% "²é¿´´ËÒ³ÒÔ»ñµÃ°ïÖú" %_Yellow% " %mas%troubleshoot"
+call :dk_color %Red% "æ£€æŸ¥ ClipUp.exe æ–‡ä»¶                [Not Found, ä¸­æ­¢è¿›ç¨‹]"
+call :dk_color2 %Blue% "æŸ¥çœ‹æ­¤é¡µä»¥è·å¾—å¸®åŠ©" %_Yellow% " %mas%troubleshoot"
 goto :k_final
 )
 
@@ -3220,11 +3220,11 @@ set "sessionId=TwBTAE0AYQBqAG8AcgBWAGUAcgBzAGkAbwBuAD0ANQA7AE8AUwBNAGkAbgBvAHIAV
 copy /y /b "%tdir%\GenuineTicket" "%tdir%\GenuineTicket.xml" %nul%
 
 if not exist "%tdir%\GenuineTicket.xml" (
-call :dk_color %Red% "Éú³É GenuineTicket.xml            [Ê§°Ü, ÖĞÖ¹½ø³Ì]"
+call :dk_color %Red% "ç”Ÿæˆ GenuineTicket.xml            [å¤±è´¥, ä¸­æ­¢è¿›ç¨‹]"
 if exist "%tdir%\Genuine*" del /f /q "%tdir%\Genuine*" %nul%
 goto :k_final
 ) else (
-echo Éú³É GenuineTicket.xml            [³É¹¦]
+echo ç”Ÿæˆ GenuineTicket.xml            [æˆåŠŸ]
 )
 
 set "_xmlexist=if exist "%tdir%\GenuineTicket.xml""
@@ -3236,9 +3236,9 @@ net stop sppsvc /y %nul%
 net stop sppsvc /y %nul%
 
 sc query sppsvc | find /i "STOPPED" %nul% && (
-echo Í£Ö¹ sppsvc ·şÎñ                 [³É¹¦]
+echo åœæ­¢ sppsvc æœåŠ¡                 [æˆåŠŸ]
 ) || (
-call :dk_color %Gray% "Í£Ö¹ sppsvc ·şÎñ                 [Ê§°Ü]"
+call :dk_color %Gray% "åœæ­¢ sppsvc æœåŠ¡                 [å¤±è´¥]"
 )
 
 %_xmlexist% (
@@ -3250,7 +3250,7 @@ net start ClipSVC /y %nul%
 %_xmlexist% (
 set error=1
 if exist "%tdir%\*.xml" del /f /q "%tdir%\*.xml" %nul%
-call :dk_color %Red% "°²×° GenuineTicket.xml            [ClipSVC ·şÎñÖØÆôÊ§°Ü£¬µÈ´ıÖĞ...]"
+call :dk_color %Red% "å®‰è£… GenuineTicket.xml            [ClipSVC æœåŠ¡é‡å¯å¤±è´¥ï¼Œç­‰å¾…ä¸­...]"
 )
 )
 
@@ -3262,19 +3262,19 @@ set rebuildinfo=
 if not exist %ProgramData%\Microsoft\Windows\ClipSVC\tokens.dat (
 set error=1
 set rebuildinfo=1
-call :dk_color %Red% "¼ì²é ClipSVC tokens.dat             [Not Found]"
+call :dk_color %Red% "æ£€æŸ¥ ClipSVC tokens.dat             [Not Found]"
 )
 
 %_xmlexist% (
 set error=1
 set rebuildinfo=1
-call :dk_color %Red% "°²×° GenuineTicket.xml            [Failed With clipup -v -o]"
+call :dk_color %Red% "å®‰è£… GenuineTicket.xml            [Failed With clipup -v -o]"
 )
 
 if exist "%ProgramData%\Microsoft\Windows\ClipSVC\Install\Migration\*.xml" (
 set error=1
 set rebuildinfo=1
-call :dk_color %Red% "¼ì²é Ticket Migration               [Ê§°Ü]"
+call :dk_color %Red% "æ£€æŸ¥ Ticket Migration               [å¤±è´¥]"
 )
 
 if defined applist if not defined showfix if defined rebuildinfo (
@@ -3289,7 +3289,7 @@ if exist "%tdir%\Genuine*" del /f /q "%tdir%\Genuine*" %nul%
 call :dk_product
 
 echo:
-echo ¼¤»î...
+echo æ¿€æ´»...
 echo:
 
 call :k_checkexp
@@ -3304,9 +3304,9 @@ if %_wmic% EQU 1 wmic path SoftwareLicensingProduct where ID='%app%' call ReArms
 if %_wmic% EQU 0 %psc% "$null=([WMI]'SoftwareLicensingProduct=''%app%''').ReArmsku()" %nul%
 
 if %errorlevel%==0 (
-echo ¼¤»î...Ó¦ÓÃ SKU-ID Rearm                   [³É¹¦]
+echo æ¿€æ´»...åº”ç”¨ SKU-ID Rearm                   [æˆåŠŸ]
 ) else (
-call :dk_color %Red% "¼¤»î...Ó¦ÓÃ SKU-ID Rearm                   [Ê§°Ü]"
+call :dk_color %Red% "æ¿€æ´»...åº”ç”¨ SKU-ID Rearm                   [å¤±è´¥]"
 )
 call :dk_refresh
 
@@ -3319,7 +3319,7 @@ goto :k_final
 
 call :dk_color %Red% "Activation Failed"
 if not defined error call :dk_color %Blue% "%_fixmsg%"
-call :dk_color2 %Blue% "²é¿´´ËÒ³ÒÔ»ñµÃ°ïÖú" %_Yellow% " %mas%troubleshoot"
+call :dk_color2 %Blue% "æŸ¥çœ‹æ­¤é¡µä»¥è·å¾—å¸®åŠ©" %_Yellow% " %mas%troubleshoot"
 
 ::========================================================================================================================================
 
@@ -3332,9 +3332,9 @@ if not defined _k38 (
 %nul% reg delete "HKLM\%specific_kms%" /f
 %nul% reg delete "HKU\S-1-5-20\%specific_kms%" /f
 %nul% reg query "HKLM\%specific_kms%" && (
-call :dk_color %Red% "É¾³ıÒÑÌí¼ÓµÄÌØ¶¨ KMS Ö÷»ú    [Ê§°Ü]"
+call :dk_color %Red% "åˆ é™¤å·²æ·»åŠ çš„ç‰¹å®š KMS ä¸»æœº    [å¤±è´¥]"
 ) || (
-echo É¾³ıÒÑÌí¼ÓµÄÌØ¶¨ KMS Ö÷»ú    [³É¹¦]
+echo åˆ é™¤å·²æ·»åŠ çš„ç‰¹å®š KMS ä¸»æœº    [æˆåŠŸ]
 )
 )
 
@@ -3344,9 +3344,9 @@ if defined _k38 (
 %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':regdel\:.*';& ([ScriptBlock]::Create($f[1])) -protect;"
 %nul% reg delete "HKLM\%specific_kms%" /f
 %nul% reg query "HKLM\%specific_kms%" && (
-echo ´Ó KMS ±£»¤ KMS38                  [³É¹¦] [Ëø¶¨×¢²á±íÃÜÔ¿]
+echo ä» KMS ä¿æŠ¤ KMS38                  [æˆåŠŸ] [é”å®šæ³¨å†Œè¡¨å¯†é’¥]
 ) || (
-call :dk_color %Red% "´Ó KMS ±£»¤ KMS38                  [Failed To Lock A Registry Key]"
+call :dk_color %Red% "ä» KMS ä¿æŠ¤ KMS38                  [Failed To Lock A Registry Key]"
 )
 )
 
@@ -3356,14 +3356,14 @@ if defined a_cor if exist "%_clipup%" del /f /q "%_clipup%" %nul%
 
 if defined a_cor (
 if exist "%_clipup%" (
-call :dk_color %Red% "É¾³ı¸´ÖÆµÄ clipup.exe ÎÄ¼ş         [Ê§°Ü]"
+call :dk_color %Red% "åˆ é™¤å¤åˆ¶çš„ clipup.exe æ–‡ä»¶         [å¤±è´¥]"
 ) else (
-echo É¾³ı¸´ÖÆµÄ clipup.exe ÎÄ¼ş         [³É¹¦]
+echo åˆ é™¤å¤åˆ¶çš„ clipup.exe æ–‡ä»¶         [æˆåŠŸ]
 )
 )
 
 for %%# in (175 407) do if %osSKU%==%%# (
-call :dk_color %Red% "%winos% ²»Ö§³ÖÔÚ·Ç Azure Æ½Ì¨ÉÏ¼¤»î¡£"
+call :dk_color %Red% "%winos% ä¸æ”¯æŒåœ¨é Azure å¹³å°ä¸Šæ¿€æ´»ã€‚"
 )
 
 goto :dk_done
@@ -3374,7 +3374,7 @@ goto :dk_done
 
 cls
 mode 99, 28
-title  ÒÆ³ı KMS38 ¼¤»î
+title  ç§»é™¤ KMS38 æ¿€æ´»
 
 %nul% reg delete "HKLM\%specific_kms%" /f
 %nul% reg delete "HKU\S-1-5-20\%specific_kms%" /f
@@ -3386,9 +3386,9 @@ title  ÒÆ³ı KMS38 ¼¤»î
 
 echo:
 %nul% reg query "HKLM\%specific_kms%" && (
-call :dk_color %Red% "É¾³ıÌØ¶¨ KMS Ö÷»ú              [Ê§°Ü]"
+call :dk_color %Red% "åˆ é™¤ç‰¹å®š KMS ä¸»æœº              [å¤±è´¥]"
 ) || (
-echo É¾³ıÌØ¶¨ KMS Ö÷»ú              [³É¹¦]
+echo åˆ é™¤ç‰¹å®š KMS ä¸»æœº              [æˆåŠŸ]
 )
 
 goto :dk_done
@@ -3614,7 +3614,7 @@ exit /b
 
 cls
 color 07
-title  ÔÚÏß KMS ¼¤»î
+title  åœ¨çº¿ KMS æ¿€æ´»
 
 ::  You are not supposed to edit anything below this.
 
@@ -3705,16 +3705,16 @@ if /i not "%arch%"=="x86" set notx86=1
 
 for %%# in (wmic.exe) do @if "%%~$PATH:#"=="" (
 %nceline%
-echo ÎŞ·¨ÔÚÏµÍ³ÖĞÕÒµ½ wmic.exe¡£
-if %winbuild% GEQ 22621 echo  È·±£ÔÚ¿ÉÑ¡¹¦ÄÜÖĞÆôÓÃÁË WMIC¡£
+echo æ— æ³•åœ¨ç³»ç»Ÿä¸­æ‰¾åˆ° wmic.exeã€‚
+if %winbuild% GEQ 22621 echo  ç¡®ä¿åœ¨å¯é€‰åŠŸèƒ½ä¸­å¯ç”¨äº† WMICã€‚
 goto Done
 )
 
 wmic path Win32_ComputerSystem get CreationClassName /value 2>nul | find /i "ComputerSystem" 1>nul || (
 %nceline%
-echo WMI ÔÚÏµÍ³ÖĞÎŞÏìÓ¦¡£
+echo WMI åœ¨ç³»ç»Ÿä¸­æ— å“åº”ã€‚
 echo:
-echo ÔÚ MAS ÖĞ£¬×ªµ½¹ÊÕÏÅÅ³ı²¢ÔËĞĞĞŞ¸´ WMI Ñ¡Ïî¡£
+echo åœ¨ MAS ä¸­ï¼Œè½¬åˆ°æ•…éšœæ’é™¤å¹¶è¿è¡Œä¿®å¤ WMI é€‰é¡¹ã€‚
 goto Done
 )
 
@@ -3740,7 +3740,7 @@ if defined _unattended if not defined _unattendedact goto Done
 
 ::========================================================================================================================================
 
-set "_title=ÔÚÏß KMS ¼¤»î"
+set "_title=åœ¨çº¿ KMS æ¿€æ´»"
 set _gui=
 
 :_KMS_Menu
@@ -3781,32 +3781,32 @@ echo.
 echo.
 echo.       ______________________________________________________________
 echo.
-echo.              [1] ¼¤»î - Windows
-echo.              [2] ¼¤»î - Office
-echo.              [3] ¼¤»î - È«²¿
+echo.              [1] æ¿€æ´» - Windows
+echo.              [2] æ¿€æ´» - Office
+echo.              [3] æ¿€æ´» - å…¨éƒ¨
 echo.
-if defined _tskinstalled call :_color2 %_White% "              [4] °²×°×Ô¶¯Ğø¶©¹¦ÄÜ      " %_Green% "[Installed]"
-if defined _oldtsk       call :_color2 %_White% "              [4] °²×°×Ô¶¯Ğø¶©¹¦ÄÜ      " %_Red% "[Old Installed]"
-if not defined _tskinstalled if not defined _oldtsk echo.              [4] °²×°×Ô¶¯Ğø¶©¹¦ÄÜ
-echo.              [5] Ğ¶ÔØ
+if defined _tskinstalled call :_color2 %_White% "              [4] å®‰è£…è‡ªåŠ¨ç»­è®¢åŠŸèƒ½      " %_Green% "[Installed]"
+if defined _oldtsk       call :_color2 %_White% "              [4] å®‰è£…è‡ªåŠ¨ç»­è®¢åŠŸèƒ½      " %_Red% "[Old Installed]"
+if not defined _tskinstalled if not defined _oldtsk echo.              [4] å®‰è£…è‡ªåŠ¨ç»­è®¢åŠŸèƒ½
+echo.              [5] å¸è½½
 echo.              _______________________________________________  
 echo.
 if %_Debug%==0 (
-echo.              [6] ¿ªÆôµ÷ÊÔÄ£Ê½         [No]
+echo.              [6] å¼€å¯è°ƒè¯•æ¨¡å¼         [No]
 ) else (
-call :_color2 %_White% "              [6] ¿ªÆôµ÷ÊÔÄ£Ê½         " %_Red% "[Yes]"
+call :_color2 %_White% "              [6] å¼€å¯è°ƒè¯•æ¨¡å¼         " %_Red% "[Yes]"
 )
 if %vNextOverride% EQU 1 (
 if %sub_next% EQU 1 (
-call :_color2 %_White% "              [7] ¸²¸Ç Office vNext     " %_Red% "[Yes]"
+call :_color2 %_White% "              [7] è¦†ç›– Office vNext     " %_Red% "[Yes]"
 ) else (
-echo               [7] ¸²¸Ç Office vNext     [Yes]
+echo               [7] è¦†ç›– Office vNext     [Yes]
 )
 ) else (
 if %sub_next% EQU 1 (
-call :_color2 %_White% "              [7] ¸²¸Ç Office vNext     " %_Yellow% "[No]"
+call :_color2 %_White% "              [7] è¦†ç›– Office vNext     " %_Yellow% "[No]"
 ) else (
-echo               [7] ¸²¸Ç Office vNext     [No]
+echo               [7] è¦†ç›– Office vNext     [No]
 )
 )
 echo.              _______________________________________________       
@@ -3814,7 +3814,7 @@ echo.
 echo.              [0] %_exitmsg%
 echo.       ______________________________________________________________
 echo.
-call :_color2 %_White% "           " %_Green% "Í¨¹ı¼üÅÌÊäÈë²Ëµ¥Ñ¡Ïî [1,2,3,4,5,6,7,0]"
+call :_color2 %_White% "           " %_Green% "é€šè¿‡é”®ç›˜è¾“å…¥èœå•é€‰é¡¹ [1,2,3,4,5,6,7,0]"
 choice /C:12345670 /N
 set _el=%errorlevel%
 
@@ -3835,7 +3835,7 @@ goto _KMS_Menu
 if defined _unattended exit /b
 
 echo.
-echo °´ÈÎÒâ¼üÍË³ö....
+echo æŒ‰ä»»æ„é”®é€€å‡º....
 pause >nul
 exit /b
 
@@ -3949,7 +3949,7 @@ mode con cols=98 lines=31
 %psc% "&%_buf%"
 title  %_title%
 ) else (
-title  ÔÚÏß KMS ¼¤»î
+title  åœ¨çº¿ KMS æ¿€æ´»
 )
 
 if defined _gui if %_Debug%==1 mode con cols=98 lines=30
@@ -3969,10 +3969,10 @@ if %_Debug% EQU 0 (
   set "_log=!_dsk!\%~n0"
   if %Silent% EQU 0 (
   echo.
-  echo ÕıÔÚÔËĞĞµ÷ÊÔÄ£Ê½...
+  echo æ­£åœ¨è¿è¡Œè°ƒè¯•æ¨¡å¼...
   if not defined _args (echo The window will be closed when finished) else (echo please wait...)
   echo.
-  echo ½«µ÷ÊÔÈÕÖ¾Ğ´Èëµ½:
+  echo å°†è°ƒè¯•æ—¥å¿—å†™å…¥åˆ°:
   echo "!_log!_Debug.log"
   )
   @echo on
@@ -3982,7 +3982,7 @@ if %_Debug% EQU 0 (
 @echo off
 if defined _gui if %_Debug%==1 (
 echo.
-call :_color %_Yellow% "°´ÈÎÒâ¼ü·µ»Ø..."
+call :_color %_Yellow% "æŒ‰ä»»æ„é”®è¿”å›..."
 pause >nul
 exit /b
 )
@@ -3996,7 +3996,7 @@ set act_failed=0
 set /a act_attempt=0
 
 echo.
-echo ³õÊ¼»¯...
+echo åˆå§‹åŒ–...
 
 :: Check Internet connection. Works even if ICMP echo is disabled.
 
@@ -4018,12 +4018,12 @@ exit /b
 
 if defined _unattended (
 echo.
-call :_color %_Red% "ÍøÂçÎ´Á¬½Ó£¬µ«ÈÔ¿É¼ÌĞøÖ´ĞĞ¡£"
+call :_color %_Red% "ç½‘ç»œæœªè¿æ¥ï¼Œä½†ä»å¯ç»§ç»­æ‰§è¡Œã€‚"
 ) else (
 %eline%
 echo Internet is not connected.
 echo:
-call :_color %_Yellow% "°´ÈÎÒâ¼ü·µ»Ø..."
+call :_color %_Yellow% "æŒ‰ä»»æ„é”®è¿”å›..."
 pause >nul
 exit /b
 )
@@ -4967,7 +4967,7 @@ if %gpr% GTR 259200 if %Win10Gov% EQU 1 set Act_OK=1
 if %gpr% EQU 259200 set Act_OK=1
 
 if %ERRORCODE% EQU 0 if %Act_OK% EQU 1 (
-call :_color %_Green% "²úÆ·¼¤»î³É¹¦"
+call :_color %_Green% "äº§å“æ¿€æ´»æˆåŠŸ"
 echo Remaining Period: %gpr2% days ^(%gpr% minutes^)
 set /a act_attempt=0
 exit /b
@@ -4992,9 +4992,9 @@ goto :activate
 
 cmd /c exit /b %ERRORCODE%
 if %ERRORCODE% NEQ 0 (
-call :_color %_Red% "²úÆ·¼¤»îÊ§°Ü: 0x!=ExitCode!"
+call :_color %_Red% "äº§å“æ¿€æ´»å¤±è´¥: 0x!=ExitCode!"
 ) else (
-call :_color %_Red% "²úÆ·¼¤»îÊ§°Ü"
+call :_color %_Red% "äº§å“æ¿€æ´»å¤±è´¥"
 )
 echo Remaining Period: %gpr2% days ^(%gpr% minutes^)
 set S_OK=0
@@ -6569,7 +6569,7 @@ if defined _unattended exit /b
 
 echo ____________________________________________________________________
 echo.
-call :_color %_Yellow% "°´ÈÎÒâ¼ü·µ»Ø..."
+call :_color %_Yellow% "æŒ‰ä»»æ„é”®è¿”å›..."
 pause >nul
 exit /b
 
@@ -6585,7 +6585,7 @@ for /f "delims=[] tokens=2" %%# in ('ping -n 1 %%a') do (if not [%%#]==[] set _i
 )
 
 if not defined _intcon (
-call :_color %_Red% "ÍøÂçÎ´Á¬½Ó"
+call :_color %_Red% "ç½‘ç»œæœªè¿æ¥"
 exit /b
 )
 
@@ -6601,7 +6601,7 @@ set /a count+=1
 )
 
 if not defined _portcon (
-call :_color %Red% "1688¶Ë¿ÚÔÚÄúµÄÁ¬½ÓÖĞ±»×èÖ¹¡£"
+call :_color %Red% "1688ç«¯å£åœ¨æ‚¨çš„è¿æ¥ä¸­è¢«é˜»æ­¢ã€‚"
 echo.
 echo Reason:   Probably restricted Internet [Office/College] is connected,
 echo           or Firewall is blocking the connection.
@@ -6743,7 +6743,7 @@ goto :eof
 
 cls
 mode con: cols=91 lines=30
-title ÔÚÏß KMS Ğ¶ÔØÍê³É
+title åœ¨çº¿ KMS å¸è½½å®Œæˆ
 
 set "key=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\taskcache\tasks"
 
@@ -6774,14 +6774,14 @@ echo ___________________________________________________________________________
 ) else (
 echo __________________________________________________________________________________________
 echo.
-call :_color %Green% "ÔÚÏß KMS ÍêÈ«Ğ¶ÔØÒÑ³É¹¦Íê³É¡£"
+call :_color %Green% "åœ¨çº¿ KMS å®Œå…¨å¸è½½å·²æˆåŠŸå®Œæˆã€‚"
 echo __________________________________________________________________________________________
 )
 
 if defined _unattended timeout /t 2 & exit /b
 
 echo.
-call :_color %_Yellow% "°´ÈÎÒâ¼ü·µ»Ø..."
+call :_color %_Yellow% "æŒ‰ä»»æ„é”®è¿”å›..."
 pause >nul
 exit /b
 
@@ -6854,7 +6854,7 @@ exit /b
 
 cls
 mode con cols=91 lines=30
-title  °²×° ×Ô¶¯ÓÀ¾Ã¼¤»î
+title  å®‰è£… è‡ªåŠ¨æ°¸ä¹…æ¿€æ´»
 
 set error_=
 set "_dest=%ProgramFiles%\Activation-Renewal"
@@ -6883,7 +6883,7 @@ if exist "%_temp%\.*" rmdir /s /q "%_temp%\" %nul%
 
 call :createInfo.txt
 %psc% "$f=[io.file]::ReadAllText('!_batp!') -split \":_extracttask\:.*`r`n\"; [io.file]::WriteAllText('%_dest%\Activation_task.cmd', '@REM Dummy ' + '%random%' + [Environment]::NewLine + $f[1].Trim(), [System.Text.Encoding]::ASCII);"
-title  °²×° ×Ô¶¯ÓÀ¾Ã¼¤»î
+title  å®‰è£… è‡ªåŠ¨æ°¸ä¹…æ¿€æ´»
 
 ::========================================================================================================================================
 
@@ -6928,12 +6928,12 @@ echo It'll only renew installed KMS licenses. It won't convert any license to KM
 echo __________________________________________________________________________________________
 echo.
 if defined ActTask (
-call :_color %Green% "ÒÑ³É¹¦´´½¨Ğø¶©ºÍ¼¤»îÈÎÎñ¡£"
+call :_color %Green% "å·²æˆåŠŸåˆ›å»ºç»­è®¢å’Œæ¿€æ´»ä»»åŠ¡ã€‚"
 ) else (
-call :_color %Green% "ÒÑ³É¹¦´´½¨Ğø¶©ÈÎÎñ¡£"
+call :_color %Green% "å·²æˆåŠŸåˆ›å»ºç»­è®¢ä»»åŠ¡ã€‚"
 )
 echo.
-call :_color %Gray% "ÇëÈ·±£ÖÁÉÙÔËĞĞ¹ıÒ»´Î¼¤»îÑ¡Ïî¡£"
+call :_color %Gray% "è¯·ç¡®ä¿è‡³å°‘è¿è¡Œè¿‡ä¸€æ¬¡æ¿€æ´»é€‰é¡¹ã€‚"
 echo __________________________________________________________________________________________
 )
 
@@ -6944,7 +6944,7 @@ echo ___________________________________________________________________________
 if defined _unattended exit /b
 
 echo.
-call :_color %_Yellow% "°´ÈÎÒâ¼ü·µ»Ø..."
+call :_color %_Yellow% "æŒ‰ä»»æ„é”®è¿”å›..."
 pause >nul
 exit /b
 
@@ -6968,7 +6968,7 @@ echo     C:\Program Files\Activation-Renewal\Info.txt
 echo     C:\Program Files\Activation-Renewal\Logs.txt
 echo ______________________________________________________________________________________________
 echo:
-echo   Online KMS Activation Script is a part of 'Î¢Èí¼¤»î½Å±¾¡¾ÓÉSeimoºº»¯¡¿' [MAS] project.
+echo   Online KMS Activation Script is a part of 'å¾®è½¯æ¿€æ´»è„šæœ¬ã€ç”±Seimoæ±‰åŒ–ã€‘' [MAS] project.
 echo:   
 echo   Homepage: mass grave[.]dev
 echo      Email: windowsaddict@protonmail.com
@@ -7116,7 +7116,7 @@ exit /b
 
 ::============================================================================
 ::
-::   This script is a part of 'Î¢Èí¼¤»î½Å±¾¡¾ÓÉSeimoºº»¯¡¿' (MAS) project.
+::   This script is a part of 'å¾®è½¯æ¿€æ´»è„šæœ¬ã€ç”±Seimoæ±‰åŒ–ã€‘' (MAS) project.
 ::
 ::   Homepage: mass grave[.]dev
 ::      Email: windowsaddict@protonmail.com
@@ -7475,7 +7475,7 @@ if %gpr% GTR 259200 if [%1]==[act_win] call :_taskchkEnterpriseG _actpass
 if %gpr% EQU 259200 set _actpass=0
 
 if %errorcode% EQU 0 if %_actpass% EQU 0 (
-echo ²úÆ·¼¤»î³É¹¦
+echo äº§å“æ¿€æ´»æˆåŠŸ
 echo Remaining Period: %gpr2% days ^(%gpr% minutes^)
 exit /b
 )
@@ -7719,7 +7719,7 @@ UninstallLicenses("sppc.dll")
 mode con cols=100 lines=32
 powershell "&{$W=$Host.UI.RawUI.WindowSize;$B=$Host.UI.RawUI.BufferSize;$W.Height=31;$B.Height=300;$Host.UI.RawUI.WindowSize=$W;$Host.UI.RawUI.BufferSize=$B;}"
 color 07
-title ¼ì²é ¼¤»î×´Ì¬ [vbs]
+title æ£€æŸ¥ æ¿€æ´»çŠ¶æ€ [vbs]
 set "SysPath=%SystemRoot%\System32"
 set "Path=%SystemRoot%\System32;%SystemRoot%\System32\Wbem;%SystemRoot%\System32\WindowsPowerShell\v1.0\"
 if exist "%SystemRoot%\Sysnative\reg.exe" (
@@ -7931,7 +7931,7 @@ cscript //nologo "!office!\ospp.vbs" /dstatus
 
 :casVend
 echo.
-call :_color %_Yellow% "°´ÈÎÒâ¼ü·µ»Ø..."
+call :_color %_Yellow% "æŒ‰ä»»æ„é”®è¿”å›..."
 pause >nul
 exit /b
 
@@ -7944,7 +7944,7 @@ exit /b
 mode con cols=100 lines=32
 powershell "&{$W=$Host.UI.RawUI.WindowSize;$B=$Host.UI.RawUI.BufferSize;$W.Height=31;$B.Height=300;$Host.UI.RawUI.WindowSize=$W;$Host.UI.RawUI.BufferSize=$B;}"
 color 07
-title ¼ì²é ¼¤»î×´Ì¬ [wmi]
+title æ£€æŸ¥ æ¿€æ´»çŠ¶æ€ [wmi]
 
 set WMI_VBS=0
 @cls
@@ -8003,11 +8003,11 @@ wmic path Win32_ComputerSystem get CreationClassName /value 2>nul | find /i "Com
 
 if %_cwmi% EQU 0 (
 echo:
-echo Error: WMI ÔÚÏµÍ³ÖĞÎŞÏìÓ¦¡£
+echo Error: WMI åœ¨ç³»ç»Ÿä¸­æ— å“åº”ã€‚
 echo:
-echo ÔÚ MAS ÖĞ£¬×ªµ½¹ÊÕÏÅÅ³ı²¢ÔËĞĞĞŞ¸´ WMI Ñ¡Ïî¡£
+echo åœ¨ MAS ä¸­ï¼Œè½¬åˆ°æ•…éšœæ’é™¤å¹¶è¿è¡Œä¿®å¤ WMI é€‰é¡¹ã€‚
 echo:
-echo °´ÈÎÒâ¼ü·µ»Ø...
+echo æŒ‰ä»»æ„é”®è¿”å›...
 pause >nul
 exit /b
 )
@@ -8159,7 +8159,7 @@ for /f "tokens=* delims=" %%# in ('%_csx% %GracePeriodRemaining%') do set "_xpr=
 )
 if %_gpr% GEQ 1 if %_prsh% EQU 1 if not defined _xpr (
 for /f "tokens=* delims=" %%# in ('%_psc% "$([DateTime]::Now.addMinutes(%GracePeriodRemaining%)).ToString('yyyy-MM-dd HH:mm:ss')" 2^>nul') do set "_xpr=%%#"
-title ¼ì²é ¼¤»î×´Ì¬ [wmi]
+title æ£€æŸ¥ æ¿€æ´»çŠ¶æ€ [wmi]
 )
 
 if %LicenseStatus% EQU 0 (
@@ -8279,12 +8279,12 @@ echo ***                  Office vNext Status                 ***
 echo %line2%
 setlocal EnableDelayedExpansion
 %_psc% "$f=[IO.File]::ReadAllText('!_batp!') -split ':vNextDiag\:.*';iex ($f[1])"
-title ¼ì²é ¼¤»î×´Ì¬ [wmi]
+title æ£€æŸ¥ æ¿€æ´»çŠ¶æ€ [wmi]
 echo %line3%
 echo.
 )
 echo.
-call :_color %_Yellow% "°´ÈÎÒâ¼ü·µ»Ø..."
+call :_color %_Yellow% "æŒ‰ä»»æ„é”®è¿”å›..."
 pause >nul
 exit /b
 
@@ -8474,7 +8474,7 @@ PrintLicensesInformation -Mode "Device"
 
 cls
 color 07
-title  ¹ÊÕÏÅÅ³ı
+title  æ•…éšœæ’é™¤
 
 set _args=
 set _elev=
@@ -8541,7 +8541,7 @@ setlocal EnableDelayedExpansion
 
 cls
 color 07
-title  ¹ÊÕÏÅÅ³ı
+title  æ•…éšœæ’é™¤
 mode con cols=77 lines=30
 
 echo:
@@ -8550,21 +8550,21 @@ echo:
 echo:
 echo:       _______________________________________________________________
 echo:                                                   
-call :_color2 %_White% "             [1] " %_Green% "°ïÖú"
+call :_color2 %_White% "             [1] " %_Green% "å¸®åŠ©"
 echo:             ___________________________________________________
 echo:                                                                      
 echo:             [2] Dism RestoreHealth
 echo:             [3] SFC Scannow
 echo:                                                                      
-echo:             [4] ĞŞ¸´ WMI
-echo:             [5] ĞŞ¸´ Licensing
-echo:             [6] ĞŞ¸´ WPA Registry
+echo:             [4] ä¿®å¤ WMI
+echo:             [5] ä¿®å¤ Licensing
+echo:             [6] ä¿®å¤ WPA Registry
 echo:             ___________________________________________________
 echo:
 echo:             [0] %_exitmsg%
 echo:       _______________________________________________________________
 echo:          
-call :_color2 %_White% "            " %_Green% "Í¨¹ı¼üÅÌÊäÈë²Ëµ¥Ñ¡Ïî £º"
+call :_color2 %_White% "            " %_Green% "é€šè¿‡é”®ç›˜è¾“å…¥èœå•é€‰é¡¹ ï¼š"
 choice /C:1234560 /N
 set _erl=%errorlevel%
 
@@ -8601,7 +8601,7 @@ echo:
 if defined _int (
 echo      Checking Internet Connection  [Connected]
 ) else (
-call :_color2 %_White% "     " %Red% "¼ì²éÍøÂçÁ¬½Ó  [Î´Á¬½Ó]"
+call :_color2 %_White% "     " %Red% "æ£€æŸ¥ç½‘ç»œè¿æ¥  [æœªè¿æ¥]"
 )
 
 echo %line%
@@ -8612,12 +8612,12 @@ echo %line%
 echo:
 echo      Notes:
 echo:
-call :_color2 %_White% "     - " %Gray% "ÇëÈ·±£ÄúµÄÍøÂçÒÑÁ¬½Ó¡£"
-call :_color2 %_White% "     - " %Gray% "ÇëÈ·±£ Windows ¸üĞÂÕı³£ÔËĞĞ¡£"
+call :_color2 %_White% "     - " %Gray% "è¯·ç¡®ä¿æ‚¨çš„ç½‘ç»œå·²è¿æ¥ã€‚"
+call :_color2 %_White% "     - " %Gray% "è¯·ç¡®ä¿ Windows æ›´æ–°æ­£å¸¸è¿è¡Œã€‚"
 echo:
 echo %line%
 echo:
-choice /C:09 /N /M ">    [9] ¼ÌĞø [0] Go back : "
+choice /C:09 /N /M ">    [9] ç»§ç»­ [0] Go back : "
 if %errorlevel%==1 goto at_menu
 
 cls
@@ -8647,7 +8647,7 @@ copy /y /b "%SystemRoot%\logs\DISM\dism.log" "!desktop!\AT_Logs\RHealth_DISM_%_t
 )
 
 echo:
-call :_color %Gray% "CBS ºÍ DISM ÈÕÖ¾»á¸´ÖÆµ½×ÀÃæÉÏµÄ AT_Logs ÎÄ¼ş¼Ğ¡£"
+call :_color %Gray% "CBS å’Œ DISM æ—¥å¿—ä¼šå¤åˆ¶åˆ°æ¡Œé¢ä¸Šçš„ AT_Logs æ–‡ä»¶å¤¹ã€‚"
 goto :at_back
 
 ::========================================================================================================================================
@@ -8670,7 +8670,7 @@ echo      restarting the PC after each time to completely fix everything that it
 echo:   
 echo %line%
 echo:
-choice /C:09 /N /M ">    [9] ¼ÌĞø [0] Go back : "
+choice /C:09 /N /M ">    [9] ç»§ç»­ [0] Go back : "
 if %errorlevel%==1 goto at_menu
 
 cls
@@ -8694,7 +8694,7 @@ copy /y /b "%SystemRoot%\logs\cbs\cbs.log" "!desktop!\AT_Logs\SFC_CBS_%_time%.lo
 )
 
 echo:
-call :_color %Gray% "CBS ÈÕÖ¾½«±»¸´ÖÆµ½×ÀÃæÉÏµÄ AT_Logs ÎÄ¼ş¼ĞÖĞ¡£"
+call :_color %Gray% "CBS æ—¥å¿—å°†è¢«å¤åˆ¶åˆ°æ¡Œé¢ä¸Šçš„ AT_Logs æ–‡ä»¶å¤¹ä¸­ã€‚"
 goto :at_back
 
 ::========================================================================================================================================
@@ -8704,7 +8704,7 @@ goto :at_back
 cls
 mode con cols=115 lines=32
 %psc% "&{$W=$Host.UI.RawUI.WindowSize;$B=$Host.UI.RawUI.BufferSize;$W.Height=31;$B.Height=200;$Host.UI.RawUI.WindowSize=$W;$Host.UI.RawUI.BufferSize=$B;}"
-title  ĞŞ¸´ Licensing ^(ClipSVC ^+ Office vNext ^+ SPP ^+ OSPP^)
+title  ä¿®å¤ Licensing ^(ClipSVC ^+ Office vNext ^+ SPP ^+ OSPP^)
 
 echo:
 echo %line%
@@ -8719,11 +8719,11 @@ echo            - Clear ClipSVC, Office vNext, SPP and OSPP licenses
 echo            - Fix SPP permissions of tokens folder and registries
 echo            - Trigger the repair option for Office.
 echo:
-call :_color2 %_White% "      - " %Red% "Ö»ÔÚ±ØÒªÊ±Ê¹ÓÃ¡£"
+call :_color2 %_White% "      - " %Red% "åªåœ¨å¿…è¦æ—¶ä½¿ç”¨ã€‚"
 echo:
 echo %line%
 echo:
-choice /C:09 /N /M ">    [9] ¼ÌĞø [0] ·µ»Ø : "
+choice /C:09 /N /M ">    [9] ç»§ç»­ [0] è¿”å› : "
 if %errorlevel%==1 goto at_menu
 
 ::========================================================================================================================================
@@ -8736,7 +8736,7 @@ cls
 echo:
 echo %line%
 echo:
-call :_color %Blue% "ÖØ½¨ ClipSVC Ğí¿ÉÖ¤"
+call :_color %Blue% "é‡å»º ClipSVC è®¸å¯è¯"
 echo:
 
 if %winbuild% LSS 10240 (
@@ -8747,7 +8747,7 @@ goto :cleanvnext
 
 %psc% "(([WMISEARCHER]'SELECT Name FROM SoftwareLicensingProduct WHERE LicenseStatus=1 AND GracePeriodRemaining=0 AND PartialProductKey IS NOT NULL').Get()).Name" %nul2% | findstr /i "Windows" %nul1% && (
 echo Windows is permanently activated.
-echo Skipping ÖØ½¨ ClipSVC Ğí¿ÉÖ¤...
+echo Skipping é‡å»º ClipSVC è®¸å¯è¯...
 goto :cleanvnext
 )
 
@@ -8762,12 +8762,12 @@ echo rundll32 clipc.dll,ClipCleanUpState
 rundll32 clipc.dll,ClipCleanUpState
 
 if %winbuild% LEQ 10240 (
-echo [³É¹¦]
+echo [æˆåŠŸ]
 ) else (
 if exist "%ProgramData%\Microsoft\Windows\ClipSVC\tokens.dat" (
-call :_color %Red% "[Ê§°Ü]"
+call :_color %Red% "[å¤±è´¥]"
 ) else (
-echo [³É¹¦]
+echo [æˆåŠŸ]
 )
 )
 
@@ -8784,10 +8784,10 @@ echo:
 echo Deleting a Volatile ^& Protected Registry Key...
 echo [%RegKey%]
 reg query "%RegKey%" %nul% && (
-call :_color %Red% "[Ê§°Ü]"
+call :_color %Red% "[å¤±è´¥]"
 echo Restart the system, that will delete this registry key automatically.
 ) || (
-echo [³É¹¦]
+echo [æˆåŠŸ]
 )
 
 ::   Clear HWID token related registry to fix activation incase if there is any corruption
@@ -8797,9 +8797,9 @@ echo Deleting a IdentityCRL Registry Key...
 echo [%_ident%]
 reg delete "%_ident%" /f %nul%
 reg query "%_ident%" %nul% && (
-call :_color %Red% "[Ê§°Ü]"
+call :_color %Red% "[å¤±è´¥]"
 ) || (
-echo [³É¹¦]
+echo [æˆåŠŸ]
 )
 
 call :_stopservice ClipSVC
@@ -8812,9 +8812,9 @@ echo Deleting Folder %ProgramData%\Microsoft\Windows\ClipSVC\
 rmdir /s /q "C:\ProgramData\Microsoft\Windows\ClipSvc" %nul%
 
 if exist "%ProgramData%\Microsoft\Windows\ClipSVC\" (
-call :_color %Red% "[Ê§°Ü]"
+call :_color %Red% "[å¤±è´¥]"
 ) else (
-echo [³É¹¦]
+echo [æˆåŠŸ]
 )
 
 echo:
@@ -8823,9 +8823,9 @@ net start ClipSVC /y %nul%
 timeout /t 3 %nul%
 if not exist "%ProgramData%\Microsoft\Windows\ClipSVC\" timeout /t 5 %nul%
 if not exist "%ProgramData%\Microsoft\Windows\ClipSVC\" (
-call :_color %Red% "[Ê§°Ü]"
+call :_color %Red% "[å¤±è´¥]"
 ) else (
-echo [³É¹¦]
+echo [æˆåŠŸ]
 )
 )
 
@@ -8842,7 +8842,7 @@ for %%# in (wlidsvc LicenseManager) do (net stop %%# /y %nul% & net start %%# /y
 echo:
 echo %line%
 echo:
-call :_color %Blue% "Çå³ı Office vNext Ğí¿ÉÖ¤"
+call :_color %Blue% "æ¸…é™¤ Office vNext è®¸å¯è¯"
 echo:
 
 setlocal DisableDelayedExpansion
@@ -8897,13 +8897,13 @@ echo Not Found Registry - %%#
 echo:
 echo %line%
 echo:
-call :_color %Blue% "ÖØ½¨ SPP Ğí¿ÉÁîÅÆ"
+call :_color %Blue% "é‡å»º SPP è®¸å¯ä»¤ç‰Œ"
 echo:
 
 call :scandat check
 
 if not defined token (
-call :_color %Red% "tokens.dat ÎÄ¼şÎ´ÕÒµ½."
+call :_color %Red% "tokens.dat æ–‡ä»¶æœªæ‰¾åˆ°."
 ) else (
 echo tokens.dat file: [%token%]
 )
@@ -8985,9 +8985,9 @@ echo Reinstalling System Licenses [slmgr /rilc]...
 cscript //nologo %windir%\system32\slmgr.vbs /rilc %nul%
 if %errorlevel% NEQ 0 cscript //nologo %windir%\system32\slmgr.vbs /rilc %nul%
 if %errorlevel% EQU 0 (
-echo [³É¹¦]
+echo [æˆåŠŸ]
 ) else (
-call :_color %Red% "[Ê§°Ü]"
+call :_color %Red% "[å¤±è´¥]"
 )
 
 call :scandat check
@@ -9006,7 +9006,7 @@ echo tokens.dat file was rebuilt successfully.
 echo:
 echo %line%
 echo:
-call :_color %Blue% "ÖØ½¨ OSPP Ğí¿ÉÁîÅÆ"
+call :_color %Blue% "é‡å»º OSPP è®¸å¯ä»¤ç‰Œ"
 echo:
 
 sc qc osppsvc %nul% || (
@@ -9018,7 +9018,7 @@ goto :repairoffice
 call :scandatospp check
 
 if not defined token (
-call :_color %Red% "tokens.dat ÎÄ¼şÎ´ÕÒµ½."
+call :_color %Red% "tokens.dat æ–‡ä»¶æœªæ‰¾åˆ°."
 ) else (
 echo tokens.dat file: [%token%]
 )
@@ -9033,7 +9033,7 @@ call :scandatospp check
 
 if defined token (
 echo:
-call :_color %Red% "É¾³ı .dat ÎÄ¼şÊ§°Ü."
+call :_color %Red% "åˆ é™¤ .dat æ–‡ä»¶å¤±è´¥."
 echo:
 )
 
@@ -9051,7 +9051,7 @@ call :scandatospp check
 
 echo:
 if not defined token (
-call :_color %Red% "ÖØ½¨ tokens.dat ÎÄ¼şÊ§°Ü."
+call :_color %Red% "é‡å»º tokens.dat æ–‡ä»¶å¤±è´¥."
 ) else (
 echo tokens.dat file was rebuilt successfully.
 )
@@ -9063,7 +9063,7 @@ echo tokens.dat file was rebuilt successfully.
 echo:
 echo %line%
 echo:
-call :_color %Blue% "ĞŞ¸´ Office Ğí¿ÉÖ¤"
+call :_color %Blue% "ä¿®å¤ Office è®¸å¯è¯"
 echo:
 
 for /f "skip=2 tokens=2*" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PROCESSOR_ARCHITECTURE') do set arch=%%b
@@ -9150,8 +9150,8 @@ goto :repairend
 echo:
 ) else (
 echo:
-call :_color %_Yellow% "½«µ¯³öÒ»¸ö´°¿Ú£¬ÄúĞèÒªÔÚ¸Ã´°¿ÚÖĞÑ¡Ôñ [Quick] Ñ¡Ïî..."
-call :_color %_Yellow% "°´ÈÎÒâ¼ü¼ÌĞø..."
+call :_color %_Yellow% "å°†å¼¹å‡ºä¸€ä¸ªçª—å£ï¼Œæ‚¨éœ€è¦åœ¨è¯¥çª—å£ä¸­é€‰æ‹© [Quick] é€‰é¡¹..."
+call :_color %_Yellow% "æŒ‰ä»»æ„é”®ç»§ç»­..."
 echo:
 pause %nul1%
 )
@@ -9195,7 +9195,7 @@ echo:
 echo %line%
 echo:
 echo:
-call :_color %Green% "Íê³É"
+call :_color %Green% "å®Œæˆ"
 goto :at_back
 
 ::========================================================================================================================================
@@ -9204,19 +9204,19 @@ goto :at_back
 
 cls
 mode 98, 34
-title  ĞŞ¸´ WMI
+title  ä¿®å¤ WMI
 
 ::  https://techcommunity.microsoft.com/t5/ask-the-performance-team/wmi-repository-corruption-or-not/ba-p/375484
 
 if exist "%SystemRoot%\Servicing\Packages\Microsoft-Windows-Server*Edition~*.mum" (
 %eline%
-echo WMI rebuild is not recommended on Windows Server. ³ÌĞòÖĞÖ¹...
+echo WMI rebuild is not recommended on Windows Server. ç¨‹åºä¸­æ­¢...
 goto :at_back
 )
 
 for %%# in (wmic.exe) do @if "%%~$PATH:#"=="" (
 %eline%
-echo wmic.exe file is not found in the system. ³ÌĞòÖĞÖ¹...
+echo wmic.exe file is not found in the system. ç¨‹åºä¸­æ­¢...
 goto :at_back
 )
 
@@ -9233,12 +9233,12 @@ call :checkwmi
 )
 
 if not defined error (
-echo [¹¤×÷ÖĞ]
-echo No need to apply this option. ³ÌĞòÖĞÖ¹...
+echo [å·¥ä½œä¸­]
+echo No need to apply this option. ç¨‹åºä¸­æ­¢...
 goto :at_back
 )
 
-call :_color %Red% "[ÎŞÏìÓ¦]"
+call :_color %Red% "[æ— å“åº”]"
 
 set _corrupt=
 sc start Winmgmt %nul%
@@ -9249,16 +9249,16 @@ for %%G in (DependOnService Description DisplayName ErrorControl ImagePath Objec
 echo:
 if defined _corrupt (
 %eline%
-echo Winmgmt service is corrupted. ³ÌĞòÖĞÖ¹...
+echo Winmgmt service is corrupted. ç¨‹åºä¸­æ­¢...
 goto :at_back
 )
 
 echo Disabling Winmgmt service
 sc config Winmgmt start= disabled %nul%
 if %errorlevel% EQU 0 (
-echo [³É¹¦]
+echo [æˆåŠŸ]
 ) else (
-call :_color %Red% "[Ê§°Ü] ³ÌĞòÖĞÖ¹..."
+call :_color %Red% "[å¤±è´¥] ç¨‹åºä¸­æ­¢..."
 sc config Winmgmt start= auto %nul%
 goto :at_back
 )
@@ -9269,14 +9269,14 @@ call :_stopservice Winmgmt
 call :_stopservice Winmgmt
 call :_stopservice Winmgmt
 sc query Winmgmt | find /i "STOPPED" %nul% && (
-echo [³É¹¦]
+echo [æˆåŠŸ]
 ) || (
-call :_color %Red% "[Ê§°Ü]"
+call :_color %Red% "[å¤±è´¥]"
 echo:
-call :_color %Blue% "½¨ÒéÑ¡Ôñ [ÖØĞÂÆô¶¯] Ñ¡Ïî£¬È»ºóÔÙ´ÎÓ¦ÓÃĞŞ¸´ WMI Ñ¡Ïî¡£"
+call :_color %Blue% "å»ºè®®é€‰æ‹© [é‡æ–°å¯åŠ¨] é€‰é¡¹ï¼Œç„¶åå†æ¬¡åº”ç”¨ä¿®å¤ WMI é€‰é¡¹ã€‚"
 echo %line%
 echo:
-choice /C:21 /N /M "> [1] ÖØÆô  [2] »¹Ô­¸ü¸Ä :"
+choice /C:21 /N /M "> [1] é‡å¯  [2] è¿˜åŸæ›´æ”¹ :"
 if !errorlevel!==1 (sc config Winmgmt start= auto %nul%&goto :at_back)
 echo:
 echo Restarting...
@@ -9288,25 +9288,25 @@ echo:
 echo Deleting WMI repository
 rmdir /s /q "%windir%\System32\wbem\repository\" %nul%
 if exist "%windir%\System32\wbem\repository\" (
-call :_color %Red% "[Ê§°Ü]"
+call :_color %Red% "[å¤±è´¥]"
 ) else (
-echo [³É¹¦]
+echo [æˆåŠŸ]
 )
 
 echo:
 echo Enabling Winmgmt service
 sc config Winmgmt start= auto %nul%
 if %errorlevel% EQU 0 (
-echo [³É¹¦]
+echo [æˆåŠŸ]
 ) else (
-call :_color %Red% "[Ê§°Ü]"
+call :_color %Red% "[å¤±è´¥]"
 )
 
 call :checkwmi
 if not defined error (
 echo:
 echo Checking WMI
-call :_color %Green% "[¹¤×÷ÖĞ]"
+call :_color %Green% "[å·¥ä½œä¸­]"
 goto :at_back
 )
 
@@ -9318,11 +9318,11 @@ echo:
 echo Checking WMI
 call :checkwmi
 if defined error (
-call :_color %Red% "[ÎŞÏìÓ¦]"
+call :_color %Red% "[æ— å“åº”]"
 echo:
 echo Run [Dism RestoreHealth] and [SFC Scannow] options and make sure there are no errors.
 ) else (
-call :_color %Green% "[¹¤×÷ÖĞ]"
+call :_color %Green% "[å·¥ä½œä¸­]"
 )
 
 goto :at_back
@@ -9370,7 +9370,7 @@ exit /b
 echo:
 echo %line%
 echo:
-call :_color %_Yellow% "°´ÈÎÒâ¼ü·µ»Ø..."
+call :_color %_Yellow% "æŒ‰ä»»æ„é”®è¿”å›..."
 pause %nul1%
 goto :at_menu
 
@@ -9546,7 +9546,7 @@ set _stg=0
 
 cls
 color 07
-title  ¸ü¸ÄWIndowsÏµÍ³°æ±¾
+title  æ›´æ”¹WIndowsç³»ç»Ÿç‰ˆæœ¬
 
 set _args=
 set _elev=
@@ -9618,7 +9618,7 @@ cls
 mode 98, 30
 
 echo:
-echo ³õÊ¼»¯...
+echo åˆå§‹åŒ–...
 echo:
 call :dk_product
 call :dk_ckeckwmic
@@ -9628,8 +9628,8 @@ call :dk_ckeckwmic
 sc start sppsvc %nul%
 if %errorlevel% NEQ 1056 if %errorlevel% NEQ 0 (
 echo:
-echo ´íÎó´úÂë: %errorlevel%
-call :dk_color %Red% "Æô¶¯ [sppsvc] ·şÎñÊ§°Ü£¬Ê£Óà¹ı³Ì¿ÉÄÜĞèÒªºÜ³¤Ê±¼ä..."
+echo é”™è¯¯ä»£ç : %errorlevel%
+call :dk_color %Red% "å¯åŠ¨ [sppsvc] æœåŠ¡å¤±è´¥ï¼Œå‰©ä½™è¿‡ç¨‹å¯èƒ½éœ€è¦å¾ˆé•¿æ—¶é—´..."
 echo:
 )
 
@@ -9646,9 +9646,9 @@ call :dk_refresh
 call :dk_actids
 if not defined applist (
 %eline%
-echo Î´ÕÒµ½¼¤»î ID£¬³ÌĞòÖÕÖ¹...
+echo æœªæ‰¾åˆ°æ¿€æ´» IDï¼Œç¨‹åºç»ˆæ­¢...
 echo:
-echo ²é¿´´ËÒ³»ñÈ¡°ïÖú %mas%troubleshoot
+echo æŸ¥çœ‹æ­¤é¡µè·å–å¸®åŠ© %mas%troubleshoot
 goto ced_done
 )
 )
@@ -9676,7 +9676,7 @@ if not defined osSKU set osSKU=%wmiSKU%
 
 if not defined osSKU (
 %eline%
-echo ¼ì²âµ½´íÎóµÄSKUÖµ£¬³ÌĞòÖÕÖ¹...
+echo æ£€æµ‹åˆ°é”™è¯¯çš„SKUå€¼ï¼Œç¨‹åºç»ˆæ­¢...
 goto ced_done
 )
 
@@ -9711,10 +9711,10 @@ if not defined osedition (
 %eline%
 DISM /English /Online /Get-CurrentEdition %nul%
 cmd /c exit /b !errorlevel!
-echo DISM ÃüÁîÊ§°Ü [Error Code - 0x!=ExitCode!]
-echo ¼ì²âµ½´íÎóµÄ²Ù×÷ÏµÍ³°æ±¾£¬³ÌĞòÖÕÖ¹...
+echo DISM å‘½ä»¤å¤±è´¥ [Error Code - 0x!=ExitCode!]
+echo æ£€æµ‹åˆ°é”™è¯¯çš„æ“ä½œç³»ç»Ÿç‰ˆæœ¬ï¼Œç¨‹åºç»ˆæ­¢...
 echo:
-echo ²é¿´´ËÒ³ÃæÑ°Çó°ïÖú¡£ %mas%troubleshoot
+echo æŸ¥çœ‹æ­¤é¡µé¢å¯»æ±‚å¸®åŠ©ã€‚ %mas%troubleshoot
 goto ced_done
 )
 
@@ -9727,9 +9727,9 @@ for /f "skip=2 tokens=2*" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT
 
 %psc% $ExecutionContext.SessionState.LanguageMode %nul2% | find /i "Full" %nul1% || (
 %eline%
-echo PowerShell ÎŞ·¨Õı³£ÏìÓ¦£¬³ÌĞòÖÕÖ¹...
+echo PowerShell æ— æ³•æ­£å¸¸å“åº”ï¼Œç¨‹åºç»ˆæ­¢...
 echo:
-echo ²é¿´´ËÒ³ÃæÑ°Çó°ïÖú¡£ %mas%troubleshoot
+echo æŸ¥çœ‹æ­¤é¡µé¢å¯»æ±‚å¸®åŠ©ã€‚ %mas%troubleshoot
 goto ced_done
 )
 
@@ -9759,8 +9759,8 @@ set "_dtarget= %_dtarget% !_wtarget! "
 for %%# in (202 203) do if %osSKU%==%%# (
 %eline%
 echo [%winos% ^| SKU:%osSKU% ^| %winbuild%]
-echo ²»½¨Òé½«´Ë°²×°°æ±¾¸ü¸ÄÎªÆäËû°æ±¾¡£
-echo ³ÌĞòÖĞÖ¹...
+echo ä¸å»ºè®®å°†æ­¤å®‰è£…ç‰ˆæœ¬æ›´æ”¹ä¸ºå…¶ä»–ç‰ˆæœ¬ã€‚
+echo ç¨‹åºä¸­æ­¢...
 goto ced_done
 )
 
@@ -9770,16 +9770,16 @@ echo "!_target!" | find /i " %%# " %nul1% || set "_target= !_target! %%# "
 
 if defined _target (
 for %%# in (%_target%) do (
-echo %%# | findstr /i "ÌØ¶¨¹ú¼ÒµÄ°æ±¾" %nul% || (set "_ntarget=!_ntarget! %%#")
+echo %%# | findstr /i "ç‰¹å®šå›½å®¶çš„ç‰ˆæœ¬" %nul% || (set "_ntarget=!_ntarget! %%#")
 )
 )
 
 if not defined _ntarget (
 %line%
 echo:
-if defined dismnotworking call :dk_color %Red% "DISM.exe Ã»ÓĞÏìÓ¦¡£"
-call :dk_color %Gray% "Î´ÕÒµ½Ä¿±ê°æ±¾¡£"
-echo µ±Ç°°æ±¾ [%osedition% ^| %winbuild%] ²»ÄÜ¸ü¸ÄÎªÈÎºÎÆäËû°æ±¾¡£
+if defined dismnotworking call :dk_color %Red% "DISM.exe æ²¡æœ‰å“åº”ã€‚"
+call :dk_color %Gray% "æœªæ‰¾åˆ°ç›®æ ‡ç‰ˆæœ¬ã€‚"
+echo å½“å‰ç‰ˆæœ¬ [%osedition% ^| %winbuild%] ä¸èƒ½æ›´æ”¹ä¸ºä»»ä½•å…¶ä»–ç‰ˆæœ¬ã€‚
 %line%
 goto ced_done
 )
@@ -9797,10 +9797,10 @@ set targetedition=
 
 %line%
 echo:
-call :dk_color %Gray% "Äú¿ÉÒÔ½«°æ±¾ [%osedition%] [%winbuild%] ¸ü¸ÄÎªÒÔÏÂÆäÖĞÖ®Ò»¡£"
+call :dk_color %Gray% "æ‚¨å¯ä»¥å°†ç‰ˆæœ¬ [%osedition%] [%winbuild%] æ›´æ”¹ä¸ºä»¥ä¸‹å…¶ä¸­ä¹‹ä¸€ã€‚"
 if defined dismnotworking (
-call :dk_color %_Yellow% "×¢Òâ - DISM.exe Ã»ÓĞÏìÓ¦¡£"
-if /i "%osedition:~0,4%"=="Core" call :dk_color %_Yellow% "     - Ò»µ©¸ü¸ÄÎª×¨Òµ°æ£¬Äú½«¿´µ½¸ü¶à°æ±¾Ñ¡Ïî¹©ÄúÑ¡Ôñ¡£"
+call :dk_color %_Yellow% "æ³¨æ„ - DISM.exe æ²¡æœ‰å“åº”ã€‚"
+if /i "%osedition:~0,4%"=="Core" call :dk_color %_Yellow% "     - ä¸€æ—¦æ›´æ”¹ä¸ºä¸“ä¸šç‰ˆï¼Œæ‚¨å°†çœ‹åˆ°æ›´å¤šç‰ˆæœ¬é€‰é¡¹ä¾›æ‚¨é€‰æ‹©ã€‚"
 )
 %line%
 echo:
@@ -9815,7 +9815,7 @@ set targetedition!counter!=%%A
 echo:
 echo [0]  %_exitmsg%
 echo:
-call :dk_color %_Green% "ÔÚ¼üÅÌÉÏÊäÈëÑ¡Ïî±àºÅ£¬È»ºó°´ "Enter"£º"
+call :dk_color %_Green% "åœ¨é”®ç›˜ä¸Šè¾“å…¥é€‰é¡¹ç¼–å·ï¼Œç„¶åæŒ‰ "Enter"ï¼š"
 set /p inpt=
 if "%inpt%"=="" goto cedmenu2
 if "%inpt%"=="0" exit /b
@@ -9851,9 +9851,9 @@ if not defined key call :changeeditiondata
 if not defined key (
 %eline%
 echo [%targetedition% ^| %winbuild%]
-echo ÎŞ·¨´Ó pkeyhelper.dll »ñÈ¡²úÆ·ÃÜÔ¿
+echo æ— æ³•ä» pkeyhelper.dll è·å–äº§å“å¯†é’¥
 echo:
-echo ²é¿´´ËÒ³ÃæÑ°Çó°ïÖú¡£ %mas%troubleshoot
+echo æŸ¥çœ‹æ­¤é¡µé¢å¯»æ±‚å¸®åŠ©ã€‚ %mas%troubleshoot
 goto ced_done
 )
 
@@ -9865,24 +9865,24 @@ goto ced_done
 cls
 %line%
 echo:
-echo ½«µ±Ç°°æ±¾[%osedition%] %winbuild%¸ü¸ÄÎª[%targetedition%]¡£
+echo å°†å½“å‰ç‰ˆæœ¬[%osedition%] %winbuild%æ›´æ”¹ä¸º[%targetedition%]ã€‚
 echo:
 
 if %_dismapi%==1 (
 call :dk_color %Blue% "Notes-"
 echo:
-echo  - Çë±£´æÄúµÄ¹¤×÷ºóÔÙ¼ÌĞø£¬ÏµÍ³½«×Ô¶¯ÖØÆô¡£
+echo  - è¯·ä¿å­˜æ‚¨çš„å·¥ä½œåå†ç»§ç»­ï¼Œç³»ç»Ÿå°†è‡ªåŠ¨é‡å¯ã€‚
 echo:
-echo  - ¸ü¸Ä°æ±¾ºó£¬ÄúĞèÒªÊ¹ÓÃ HWID Ñ¡Ïî½øĞĞ¼¤»î¡£
+echo  - æ›´æ”¹ç‰ˆæœ¬åï¼Œæ‚¨éœ€è¦ä½¿ç”¨ HWID é€‰é¡¹è¿›è¡Œæ¿€æ´»ã€‚
 echo:
-choice /C:21 /N /M "[1] ¼ÌĞø [2] %_exitmsg% : "
+choice /C:21 /N /M "[1] ç»§ç»­ [2] %_exitmsg% : "
 if !errorlevel!==1 exit /b
 )
 
 ::========================================================================================================================================
 
 if %_dismapi%==0 (
-echo °²×° %_chan% ÃÜÔ¿ [%key%]
+echo å®‰è£… %_chan% å¯†é’¥ [%key%]
 echo:
 if %_wmic% EQU 1 wmic path SoftwareLicensingService where __CLASS='SoftwareLicensingService' call InstallProductKey ProductKey="%key%" %nul%
 if %_wmic% EQU 0 %psc% "(([WMISEARCHER]'SELECT Version FROM SoftwareLicensingService').Get()).InstallProductKey('%key%')" %nul%
@@ -9894,24 +9894,24 @@ if !error_code! NEQ 0 set "error_code=[0x!=ExitCode!]"
 
 if !error_code! EQU 0 (
 call :dk_refresh
-call :dk_color %Green% "[³É¹¦]"
+call :dk_color %Green% "[æˆåŠŸ]"
 echo:
-call :dk_color %Gray% "ĞèÒªÖØĞÂÆô¶¯²ÅÄÜÕıÈ·¸ü¸Ä°æ±¾¡£"
+call :dk_color %Gray% "éœ€è¦é‡æ–°å¯åŠ¨æ‰èƒ½æ­£ç¡®æ›´æ”¹ç‰ˆæœ¬ã€‚"
 ) else (
 call :dk_color %Red% "[Unsuccessful] [Error Code: 0x!=ExitCode!]"
-echo ²é¿´´ËÒ³ÃæÑ°Çó°ïÖú¡£ %mas%troubleshoot
+echo æŸ¥çœ‹æ­¤é¡µé¢å¯»æ±‚å¸®åŠ©ã€‚ %mas%troubleshoot
 )
 )
 
 if %_dismapi%==1 (
 echo:
-echo Ê¹ÓÃ %_chan% ÃÜÔ¿ %key% Ó¦ÓÃ DISM API ·½·¨
+echo ä½¿ç”¨ %_chan% å¯†é’¥ %key% åº”ç”¨ DISM API æ–¹æ³•
 echo:
 %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':dismapi\:.*';& ([ScriptBlock]::Create($f[1])) %targetedition% %key%;"
 timeout /t 3 %nul1%
 echo:
 call :dk_color %Blue% "Incase of errors, you must restart your system before trying again."
-echo ²é¿´´ËÒ³ÃæÑ°Çó°ïÖú¡£ %mas%troubleshoot
+echo æŸ¥çœ‹æ­¤é¡µé¢å¯»æ±‚å¸®åŠ©ã€‚ %mas%troubleshoot
 )
 %line%
 
@@ -9926,22 +9926,22 @@ mode con cols=105 lines=32
 %psc% "&{$W=$Host.UI.RawUI.WindowSize;$B=$Host.UI.RawUI.BufferSize;$W.Height=31;$B.Height=200;$Host.UI.RawUI.WindowSize=$W;$Host.UI.RawUI.BufferSize=$B;}"
 
 echo:
-echo ½«µ±Ç°°æ±¾[%osedition%] %winbuild%¸ü¸ÄÎª[%targetedition%]¡£
+echo å°†å½“å‰ç‰ˆæœ¬[%osedition%] %winbuild%æ›´æ”¹ä¸º[%targetedition%]ã€‚
 echo:
 call :dk_color %Blue% "Important - Save your work before continue, system will auto reboot."
 echo:
-choice /C:01 /N /M "[1] ¼ÌĞø [0] %_exitmsg% : "
+choice /C:01 /N /M "[1] ç»§ç»­ [0] %_exitmsg% : "
 if %errorlevel%==1 exit /b
 
 echo:
-echo ³õÊ¼»¯...
+echo åˆå§‹åŒ–...
 echo:
 
 if %_stg%==0 (set stage=) else (set stage=-StageCurrent)
 %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':cbsxml\:.*';& ([ScriptBlock]::Create($f[1])) -SetEdition %targetedition% %stage%;"
 echo:
 call :dk_color %Blue% "Incase of errors, you must restart your system before trying again."
-echo ²é¿´´ËÒ³ÃæÑ°Çó°ïÖú¡£ %mas%troubleshoot
+echo æŸ¥çœ‹æ­¤é¡µé¢å¯»æ±‚å¸®åŠ©ã€‚ %mas%troubleshoot
 %line%
 
 goto ced_done
@@ -9966,9 +9966,9 @@ if not defined key call :changeeditiondata
 if not defined key (
 %eline%
 echo [%targetedition% ^| %winbuild%]
-echo ÎŞ·¨´Ó pkeyhelper.dll »ñÈ¡²úÆ·ÃÜÔ¿
+echo æ— æ³•ä» pkeyhelper.dll è·å–äº§å“å¯†é’¥
 echo:
-echo ²é¿´´ËÒ³ÃæÑ°Çó°ïÖú¡£ %mas%troubleshoot
+echo æŸ¥çœ‹æ­¤é¡µé¢å¯»æ±‚å¸®åŠ©ã€‚ %mas%troubleshoot
 goto ced_done
 )
 
@@ -9976,14 +9976,14 @@ goto ced_done
 
 cls
 echo:
-echo ½«µ±Ç°°æ±¾[%osedition%] %winbuild%¸ü¸ÄÎª[%targetedition%]¡£
+echo å°†å½“å‰ç‰ˆæœ¬[%osedition%] %winbuild%æ›´æ”¹ä¸º[%targetedition%]ã€‚
 echo:
-echo Ê¹ÓÃ %_chan% ÃÜÔ¿Ö´ĞĞÃüÁî
+echo ä½¿ç”¨ %_chan% å¯†é’¥æ‰§è¡Œå‘½ä»¤
 echo DISM /online /Set-Edition:%targetedition% /ProductKey:%key% /AcceptEula
 DISM /online /Set-Edition:%targetedition% /ProductKey:%key% /AcceptEula
 
 call :dk_color %Blue% "You must restart the system at this stage."
-echo °ïÖú: %mas%troubleshoot
+echo å¸®åŠ©: %mas%troubleshoot
 
 ::========================================================================================================================================
 
@@ -10370,7 +10370,7 @@ exit /b
 :MASend
 echo:
 if defined _MASunattended timeout /t 2 & exit /b
-echo °´ÈÎÒâ¼üÍË³ö....
+echo æŒ‰ä»»æ„é”®é€€å‡º....
 pause >nul
 exit /b
 
